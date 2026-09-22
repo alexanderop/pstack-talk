@@ -11,7 +11,9 @@
     "export:pdf": "slidev export --format pdf",
     "export:png": "slidev export --format png",
     "research:check": "node scripts/check-research.mjs",
-    "research:test": "node --test scripts/check-research.test.mjs"
+    "research:test": "node --test scripts/check-research.test.mjs",
+    "notes": "node scripts/presenter.mjs",
+    "notes:check": "node scripts/presenter.mjs --check"
   },
   "dependencies": {
     "@alexop/slidev-addon-utils": "workspace:*",
@@ -19,7 +21,9 @@
   },
   "devDependencies": {
     "@slidev/cli": "^52.19.1",
+    "@slidev/parser": "52.19.1",
     "@slidev/theme-default": "^0.25.0",
+    "playwright-chromium": "^1.63.0",
     "typescript": "^7.0.2",
     "unocss": "^66.10.2",
     "vite": "^8.3.0"

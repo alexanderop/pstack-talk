@@ -9,7 +9,9 @@
     "build": "pnpm --filter slidev-starter build",
     "export": "pnpm --filter slidev-starter export",
     "research:check": "pnpm --filter slidev-starter research:check",
-    "research:test": "pnpm --filter slidev-starter research:test"
+    "research:test": "pnpm --filter slidev-starter research:test",
+    "notes": "pnpm --filter slidev-starter notes",
+    "notes:check": "pnpm --filter slidev-starter notes:check"
   },
   "keywords": [
     "slidev",

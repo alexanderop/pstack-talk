@@ -1,66 +1,53 @@
-# Slidev Starter Template
+# Learning from pstack
 
-A starter template for Slidev presentations using `@alexop/slidev-theme-brand` and `@alexop/slidev-addon-utils`.
+The talk from `../pstack-starfall` adapted to this workspace’s brand theme and utilities addon. The source repository is unchanged.
 
-## Quick Start
+24 slides: an untimed event cover, 22 timed slides planned for 12 minutes, and an untimed dancing finale for questions. Speaker notes and timings live in `slides.md`.
+
+From the workspace root:
 
 ```bash
-# Install dependencies
 pnpm install
-
-# Start dev server
 pnpm dev
-
-# Build for production
 pnpm build
-
-# Export to PDF
-pnpm export:pdf
-
-# Export to PNG (one file per slide)
-pnpm export:png
+pnpm notes
+pnpm notes:check
+pnpm research:check
+pnpm export
 ```
 
-## What's Included
+Press **P** in Slidev for presenter mode. `presenter.md` is generated from the slide notes; regenerate it with `pnpm notes` after editing them.
 
-- **@alexop/slidev-theme-brand**: Custom theme with dark colors and pink accents
-- **@alexop/slidev-addon-utils**: Reusable components (Callout) and layouts (TwoCols)
+- `slides.md` — active talk, using the shared theme, fonts, layouts and footer.
+- `styles/index.css` — sizing for diagrams and screenshots; brand styling remains in the theme.
+- `public/` — referenced artwork and diagrams; SVG colors match the brand palette. The original illustrated cover is retained in `public/covers/`.
+- `research/` — supplied research, source excerpts, prompt records and earlier narrative archives.
+- `research/raw/` — original slide and provenance captures.
+- `examples/components.md` — original starter demonstration, retained as an authoring reference.
 
-## Customization
+The four-stage loop and recommendation to fork pstack are the presenter’s framing. This migration preserves the supplied research; it does not refresh the cited pstack snapshot.
 
-Edit `slides.md` to create your presentation content. Use the provided layouts and components:
+## Published talk
 
-### Layouts
-- `Cover` - Title slide
-- `Section` - Section divider
-- `TwoCols` - Two-column layout
-- `default` - Standard content slide
+- Slides: https://pstack-talk.vercel.app
+- PDF: https://pstack-talk.vercel.app/pstack-talk.pdf
+- Secret resource gist: https://gist.github.com/alexanderop/743bbd811f2a56063fb79d3b3847ec27
+- Editable resource text: `resources/pstack-talk.md`
 
-### Components
-- `<Callout type="info|warn|error">` - Colored callout boxes
+The closing summary and dancing finale link to the same gist. The PDF includes every click state (43 pages for 24 slides).
 
-## Build the talk with research
-
-The starter includes a local research folder based on [Andrej Karpathy's LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f). Raw sources remain unchanged in `research/raw/`. The agent maintains topic-based synthesis in `research/wiki/` and uses it while discussing or editing the talk.
-
-Start by filling in `research/brief.md`. Then give the agent a resource in natural language:
-
-```text
-Add this article to the talk's research: https://example.com/article
-```
-
-```text
-Ingest this YouTube video, then tell me how it changes the talk: https://youtube.com/watch?v=example
-```
-
-The project instructions tell Codex and Claude Code how to capture articles, preserve YouTube transcripts, update the wiki, discuss contradictions, and connect evidence to slides. Validate the research structure with:
+To refresh the downloadable PDF before building:
 
 ```bash
-pnpm research:check
+pnpm --filter slidev-starter exec playwright install chromium
+pnpm --filter slidev-starter exec slidev export --output public/pstack-talk.pdf --with-clicks --dark --wait 500
+pnpm build
 ```
 
-## Learn More
+If using an existing Chrome installation, pass `--executable-path` to `slidev export`. The checked-in root `vercel.json` builds the workspace and serves `starter/dist`, including the PDF. The initial publication uploaded only the built static directory. Refresh the PDF whenever slides change.
 
-- [Slidev Documentation](https://sli.dev)
-- [Theme Documentation](../packages/slidev-theme-brand/README.md)
-- [Addon Documentation](../packages/slidev-addon-utils/README.md)
+To update the resource gist:
+
+```bash
+gh gist edit 743bbd811f2a56063fb79d3b3847ec27 -f pstack-talk.md starter/resources/pstack-talk.md
+```

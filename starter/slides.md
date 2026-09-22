@@ -2,644 +2,832 @@
 theme: '@alexop/slidev-theme-brand'
 addons:
   - '@alexop/slidev-addon-utils'
-title: Example Talk
-layout: cover
+layout: default
+class: p-0
+hideFooter: true
+background: false
+title: 'Learning from Pstack: Build Your Own Reliable Coding Agent Stack'
+info: A talk about planning, implementation, review and verification with pstack.
+author: Alexander Opalic
+colorSchema: dark
+aspectRatio: 16/9
+canvasWidth: 1000
 transition: slide-left
-mdc: true
+highlighter: shiki
 drawings:
   persist: false
-info: |
-  ## Example Presentation
-
-  By Alexander Opalic — 2026
-
-  Learn more at [Slidev](https://sli.dev)
+defaults:
+  layout: default
+mdc: true
+download: /pstack-talk.pdf
+presenter: true
+browserExporter: true
+duration: 12min
+timer: stopwatch
 ---
 
-# Example Talk
-
-By Alexander Opalic
+<h1 class="sr-only">TypeScript Meetup Munich 2026</h1>
+<img src="/covers/typescript-meetup-munich-oktoberfest-2026.png" alt="TypeScript Meetup Munich 2026 in a vintage purple and pink poster style, with Munich landmarks, Oktoberfest tents, a Ferris wheel, and pretzels." class="absolute inset-0 h-full w-full object-contain" />
 
 <!--
-Welcome everyone! This presentation demonstrates the full capabilities of the @alexop/slidev-theme-brand theme and @alexop/slidev-addon-utils addon.
+TIME: COVER
+
+- Leave the event cover on screen as the audience settles.
+- Advance to the talk title to start the 12-minute presentation.
+
+SOURCE: research/munich-oktoberfest-cover-prompt.md. Generated with the built-in image_gen tool, matching the earlier TACON cover style.
 -->
 
 ---
-layout: section
+layout: default
+class: title-reel-slide
+background: ''
 ---
 
-# Agenda
-
-<v-clicks>
-
-1. About me
-2. Why Slidev?
-3. Layouts & Components
-4. How It Works
-5. Live Demo
-6. Key Features
-
-</v-clicks>
-
----
-
-# About me
-
-<About />
-
-<!--
-Quick intro — the About component from the addon handles the layout automatically with avatar and bio list.
--->
-
----
-
-# Why?
-
-Slidev makes creating presentations:
-
-<v-clicks>
-
-- **Developer-friendly** — Write slides in Markdown
-- **Themeable** — Customize with Vue components
-- **Interactive** — Add live coding demos
-- **Exportable** — PDF, PNG, or SPA
-
-</v-clicks>
-
----
-layout: TwoCols
----
-
-::left::
-
-## Main Content
-
-This is your main content on the left side.
-
-You can include:
-- Lists
-- Code blocks
-- Images
-
-::right::
-
-<Callout type="info">
-
-### Pro Tip
-
-Use the TwoCols layout for side-by-side content comparisons or to highlight important information!
-
-</Callout>
-
----
-
-# How It Works
-
-<v-clicks>
-
-1. **Write** — Edit `slides.md` with your content
-2. **Preview** — Run `pnpm dev` to see live changes
-3. **Style** — Customize theme and components
-4. **Export** — Generate PDF or PNG outputs
-
-</v-clicks>
-
-<Callout type="warn">
-Remember to install dependencies first with `pnpm install`
-</Callout>
-
----
-layout: section
----
-
-# Demo Time
-
----
-
-# Code Example
-
-Here's a simple Vue component:
-
-```vue {1|3-4|6-10|all}
 <script setup>
-import { ref } from 'vue'
-
-const count = ref(0)
+import GameReel from './components/GameReel.vue'
 </script>
 
-<template>
-  <button @click="count++">
-    Count: {{ count }}
-  </button>
-</template>
-```
+<div class="title-reel-grid">
+<div class="title-reel-copy">
+<h1>Learning<br>from pstack</h1>
+<p class="title-reel-subtitle">Build Your Own Reliable<br>Coding Agent Stack</p>
+<p class="title-reel-author">Alexander Opalic</p>
+</div>
+<GameReel />
+</div>
 
 <!--
-Click through to highlight: imports, reactive state, then the template with the click handler.
+TIME: 00:00–00:10 (10s)
+
+- Welcome — enough energy left for some agentic-coding talk?
+- Models and tools improved hugely since my talk last year.
+- Today: learn from pstack; take away a verification skill for your own project.
+
+SOURCE: See research/workflow-narrative.md. The four-stage loop and fork recommendation are the presenter’s framing.
+-->
+
+---
+layout: default
+class: speaker-intro
+---
+
+<div class="speaker-grid">
+<div class="speaker-copy">
+<h1>Hi, I’m Alex</h1>
+<p class="speaker-name">Alexander Opalic</p>
+<p class="speaker-bio">Developer from Germany.<br>I build software and share what I learn.</p>
+<a class="speaker-link" href="https://alexop.dev">alexop.dev</a>
+</div>
+<img class="speaker-photo" src="/speaker/alexander-opalic-speaking.png" alt="Alexander Opalic giving a talk beside a presentation screen." />
+</div>
+
+<!--
+TIME: 00:10–00:20 (10s)
+
+- Alex — developer from Germany; I share what I learn on alexop.dev.
+- Last year: AI talk at the TypeScript meetup.
+- Since then: better models and tools — how much has our workflow improved?
+
+SOURCE: https://alexop.dev (accessed 2026-09-22); research/raw/2026-09-22-speaker-introduction.md. Photo supplied by the presenter.
+-->
+
+---
+layout: default
+class: artwork
+---
+
+# The perfect AI coding workflow
+<div class="carl-workflow">
+<img class="cover-art" src="/illustrations/feature-factory.png" alt="An automated factory promises a finished feature at the press of a button." />
+<svg class="carl-callouts" viewBox="0 0 1808 870" aria-label="Carl plays all three roles">
+<g v-click="1">
+<text x="150" y="165"><tspan x="150">Carl as a</tspan><tspan x="150" dy="46">developer</tspan></text>
+<path d="M150 237 L150 330 M135 312 L150 330 L165 312" />
+</g>
+<g v-click="2">
+<text x="345" y="165"><tspan x="345">Carl as a</tspan><tspan x="345" dy="46">designer</tspan></text>
+<path d="M345 237 L345 330 M330 312 L345 330 L360 312" />
+</g>
+<g v-click="3">
+<text x="540" y="119"><tspan x="540">Carl as a</tspan><tspan x="540" dy="46">business</tspan><tspan x="540" dy="46">analyst</tspan></text>
+<path d="M540 237 L525 330 M513 310 L525 330 L543 314" />
+</g>
+</svg>
+</div>
+
+<!--
+TIME: 00:20–00:50 (30s)
+
+- Start with the image only. Click 1: Carl as a developer. Click 2: Carl as a designer. Click 3: Carl as a business analyst.
+- [Ask for hands] “Who has had an agent say ‘done’ — and then found the feature didn’t work?”
+- [Wait 3–5 seconds; look around and acknowledge the actual response. Allow 10–15 seconds total.]
+- “That gap is what this talk is about.” The dream: an idea → a good, working feature.
+- Our engineering job: build a workflow we can trust. What foundations do we need?
+
+SOURCE: See research/workflow-narrative.md. The four-stage loop and fork recommendation are the presenter’s framing.
+-->
+
+---
+class: diagram
+---
+
+# Three foundations for trusted agent work
+
+<div class="hamcrab-foundations">
+<section v-click="1" class="foundation-scene">
+<img src="/illustrations/hamcrab-verification.png" alt="Hamcrab inspects a running app with a magnifying glass and a green check." />
+<h2>Verification</h2>
+<p>Run the app.<br>Check the result.</p>
+</section>
+<section v-click="2" class="foundation-scene">
+<img src="/illustrations/hamcrab-workflow.png" alt="Hamcrab follows an instruction book and moves a task through a repeatable workflow." />
+<h2>Engineering skills</h2>
+<p>Make your workflow<br>reusable.</p>
+</section>
+<section v-click="3" class="foundation-scene">
+<img src="/illustrations/hamcrab-codebase.png" alt="Hamcrab fits a code module into an organized structure with tidy connections." />
+<h2>Codebase design</h2>
+<p>Make the right change<br>easy.</p>
+</section>
+</div>
+<p v-after class="foundations-takeaway">Invest in the foundations. Reduce repeated manual review.</p>
+
+<!--
+TIME: 00:50–01:45 (55s)
+
+- [click] Verification — agent runs the real app end to end; shop → cart → checkout.
+- [click] Engineering skills — encode the practices we want followed.
+- [click] Codebase design — “the codebase is also memory”; agents copy existing patterns.
+- Biggest ongoing investment: make those patterns worth copying.
+- Aim: less repeated correction and review; trust still needs evidence.
+
+SOURCE: Lauren’s video, 07:05–18:57 and 18:57–30:38; research/raw/2026-09-21-three-foundations-direction.md. Emphasis on codebase investment is the presenter’s framing.
+-->
+
+---
+class: diagram
+---
+
+# The loop I want around every change
+
+<img class="diagram-image" src="/diagrams/workflow-loop.svg" alt="Plan, Implement, Review and Verify form a loop, with evidence sending work back for revision." />
+
+<!--
+TIME: 01:45–02:25 (40s)
+
+- [Point around the loop] Plan → implement → review → verify.
+- A working feature can still have poor code — cover all four responsibilities.
+- Review the change; verify the behavior in the running app.
+- Failed check → fix and repeat. This is my teaching model for the workflow.
+
+SOURCE: See research/workflow-narrative.md. The four-stage loop and fork recommendation are the presenter’s framing.
+-->
+
+---
+class: plugin-comic
+---
+
+# What is a plugin?
+
+<img class="plugin-comic-image" src="/illustrations/hamcrab-plugin-comic.png" alt="Four-panel comic: Hamcrab repeats instructions, packages a skills booklet and optional tools as a plugin, installs it for a coding robot, and shares it with another Hamcrab." />
+<p class="plugin-definition">An installable package of reusable workflows and optional tools.</p>
+
+<!--
+TIME: 02:25–02:45 (20s)
+
+- [Ask for hands] “Who has already installed a skill or plugin for their coding agent?”
+- [Brief show of hands; acknowledge the response.]
+- [Few hands: use Hamcrab’s packaging analogy. Many hands: keep the definition brief.]
+- Plugin = installable, shareable package of skills and optional tools. Skills describe the work; tools provide actions.
+- Hamcrab packages repeated instructions; pstack packages an engineering workflow.
+
+SOURCE: OpenAI, Plugin architecture, https://developers.openai.com/plugins/concepts/plugins (accessed 2026-09-22). Captured in research/raw/openai-plugin-architecture.md. Comic generated with the built-in imagegen tool using the existing Hamcrab artwork as a character reference.
+-->
+
+---
+class: creator-intro
+---
+
+<div class="creator-grid">
+<div class="creator-copy">
+<h1>Meet pstack’s creator</h1>
+<p class="creator-name">Lauren Tan</p>
+<a class="creator-handle" href="https://x.com/poteto">@poteto</a>
+<p>Builds and maintains<br><strong>React Compiler</strong></p>
+<p>Previously at<br><strong>Cursor · Meta · Netflix</strong></p>
+<p class="creator-purpose">pstack packages her workflow<br>for writing higher-quality code.</p>
+</div>
+<img class="creator-profile" src="/creator/lauren-poteto-profile.png" alt="Lauren’s @poteto profile, with a cat banner, illustrated avatar, and bio mentioning React Compiler, Cursor, Meta, and Netflix." />
+</div>
+
+<!--
+TIME: 02:45–03:00 (15s)
+
+- Lauren Tan, known as poteto, created pstack.
+- She helps build React Compiler and has worked at Cursor, Meta, and Netflix.
+- Pstack packages the engineering practices she uses herself. Let’s look inside.
+
+SOURCE: https://github.com/cursor/plugins/tree/main/pstack and https://react.dev/community/team, accessed 2026-09-22. Research: research/raw/2026-09-22-pstack-creator.md. Profile screenshot supplied by the user on 2026-09-22, preserved in public/creator/lauren-poteto-profile.png. Current employer is omitted because the supplied profile and React team page differ.
 -->
 
 ---
 
-<VuePlayground
-  height="450px"
-  url="https://play.vuejs.org/#eNp9kUFLwzAUx7/KM5cqzBXR0+gGKgP1oKKCl1xG99ZlpklIXuag9Lv7krK5w9it7//7v/SXthP3zo23EcVEVKH2yhEEpOhm0qjWWU/QgccV9LDytoWCq4U00tTWBII2NDBN/LJ4Qq0tfFuvlxfFlTRVORzHB/FA2Dq9IOQJoFrfzLouL/d9VfKUU2VcJNhet3aJeioFcymgZFiVR/tiJCjw61eqGW+CNWzepX0pats6pdG/OVKsJ8UEMklswXa/LzkjH3G0z+s11j8n8k3YpUyKd48B/RalODBa+AZpwPPPV9zx8wGyfdTcPgM/MFgdk+NQe4hmydpHvWz7nL+/Ms1XmO8ITdhfKommZp/7UvA/eTxz9X/d2/Fd3pOmF/0fEx+nNQ=="
-/>
+# How pstack organizes agent work
+
+<div class="hamcrab-foundations">
+<section v-click="1" class="foundation-scene">
+<img src="/illustrations/hamcrab-skills.png" alt="Hamcrab follows an instruction manual while tightening a mechanism with a wrench." />
+<h2>Skills</h2>
+<p>How to do<br>the work</p>
+</section>
+<section v-click="2" class="foundation-scene">
+<img src="/illustrations/hamcrab-playbooks.png" alt="Hamcrab moves a task through a state diagram, with a check that advances it or returns it for fixes." />
+<h2>Playbooks</h2>
+<p>What happens next<br>and when</p>
+</section>
+<section v-click="3" class="foundation-scene">
+<img src="/illustrations/hamcrab-principles.png" alt="Hamcrab follows a blueprint and fits a TypeScript block into its matching slot; an incompatible shape stays outside." />
+<h2>Principles</h2>
+<p>Rules that shape<br>good code</p>
+</section>
+</div>
 
 <!--
-This is the VuePlayground component from the addon — it embeds the Vue SFC Playground directly in your slides.
+TIME: 03:00–03:25 (25s)
+
+- Pstack: Lauren’s workflow, published as poteto — files we can read and adapt.
+- [click] Skills = how to do a particular job.
+- [click] Playbooks = steps for a feature, bug fix, or other task; include loops and checks.
+- [click] Principles = engineering guidance: model the domain, prove it works.
+- Instructions guide the agent; they still need checks and good project tools.
+
+SOURCE: research/raw/2026-09-22-pstack-concepts-source.md, especially Poteto Mode, Autopilot-full, and Type System Discipline. The illustrations are teaching metaphors.
+
+SOURCE: See research/workflow-narrative.md. The four-stage loop and fork recommendation are the presenter’s framing.
 -->
 
 ---
-
-# Key Features
-
-<div class="grid grid-cols-2 gap-6 mt-4">
-<v-clicks>
-
-<div class="p-5 rounded-lg border border-white/10 bg-white/5">
-  <div class="text-3xl mb-2">🔥</div>
-  <h3 class="text-lg font-bold mb-1">Hot Reload</h3>
-  <p class="text-sm op-70">Instant preview as you edit your slides in Markdown</p>
-</div>
-
-<div class="p-5 rounded-lg border border-white/10 bg-white/5">
-  <div class="text-3xl mb-2">🎨</div>
-  <h3 class="text-lg font-bold mb-1">Themeable</h3>
-  <p class="text-sm op-70">Custom themes with Vue components and UnoCSS</p>
-</div>
-
-<div class="p-5 rounded-lg border border-white/10 bg-white/5">
-  <div class="text-3xl mb-2">📦</div>
-  <h3 class="text-lg font-bold mb-1">Exportable</h3>
-  <p class="text-sm op-70">Export to PDF, PNG, or deploy as a static SPA</p>
-</div>
-
-<div class="p-5 rounded-lg border border-white/10 bg-white/5">
-  <div class="text-3xl mb-2">🧩</div>
-  <h3 class="text-lg font-bold mb-1">Extensible</h3>
-  <p class="text-sm op-70">Addons, components, and layouts for reusable content</p>
-</div>
-
-</v-clicks>
-</div>
-
----
-clicks: 9
+layout: default
+class: artwork
 ---
 
-# FolderTree Component
+# Invoke poteto-mode
 
-Interactive file explorer with click-based folder reveal.
-
-<FolderTree
-  root
-  title="Flat Structure"
-  :structure="`src/
-  components/
-    BaseButton.vue
-    BaseCard.vue
-    BaseInput.vue
-    TodoList.vue
-    TodoListItem.vue
-    TheHeader.vue
-  composables/
-    useTodos.ts
-    useLocalStorage.ts
-    useKeyboard.ts
-  utils/
-    validators.ts
-    dateHelpers.ts
-    todoHelpers.ts
-  plugins/
-    api.ts
-    auth.ts
-    toast.ts
-    i18n.ts
-  layout/
-    DefaultLayout.vue
-    AdminLayout.vue
-  views/
-    Home.vue
-    TodosPage.vue
-    CompletedPage.vue
-  router/
-    index.ts
-  store/
-    useTodosStore.ts
-  assets/
-App.vue
-main.js`"
-  :open-on-clicks="[
-    '/src',
-    '/src/components',
-    '/src/composables',
-    '/src/utils',
-    '/src/plugins',
-    '/src/layout',
-    '/src/views',
-    '/src/router',
-    '/src/store',
-  ]"
-/>
+<img class="entry-image" src="/illustrations/poteto-mode-entry.png" alt="Prompt composer with the poteto-mode skill selected." />
 
 <!--
-Each click reveals a different folder. Use openOnClicks with an array of paths to walk through a project structure step by step.
-The clicks frontmatter should match the number of openOnClicks entries.
+TIME: 03:25–03:40 (15s)
+
+- Select poteto-mode explicitly, then describe the request.
+- One entry point routes the work — no need to memorize every playbook.
+- Requests might be a feature, prototype, investigation, or documentation.
+- Our walkthrough: a theme preference that survives reload.
+
+SOURCE: User-supplied invocation screenshot. The screenshot shows skill selection, not an executed theme request. research/raw/2026-09-22-pstack-feature-trace.md supports the illustrative routing walkthrough.
+-->
+
+---
+layout: default
+class: poteto-overview
+---
+
+# One example through Poteto mode
+
+<img class="poteto-overview-image" src="/diagrams/poteto-mode-overview.png" alt="Simplified workflow: read request, choose the Feature playbook, plan and implement with delegation and review, then verify. A failed check loops back to implementation. Model the Domain and Prove It Works support the work." />
+<p class="poteto-overview-caption">The overview first. Then the instructions behind it.</p>
+
+<!--
+TIME: 03:40–04:00 (20s)
+
+- Read request → choose Feature → plan and implement → verify.
+- The playbook brings in supporting skills and principles as needed.
+- Failed verification → fix and check again.
+- Now open the files — like stepping through a debugger.
+
+SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. Generated diagram is the presenter’s simplified overview of this feature example. The source walkthrough notes retain the additional playbook steps. Image prompt in research/poteto-overview-prompt.md.
 -->
 
 ---
 layout: code-editor
-project: my-vue-app
-activeFile: schema.ts
-tabs: schema.ts, App.vue
+class: pstack-trace
+title: Invoke poteto-mode
+project: One example through Poteto mode
+activeFile: skills/poteto-mode/SKILL.md
+tabs: skills/poteto-mode/SKILL.md
+step: Read request
 files: |
-  src
-    schema.ts
-    components/
-      ChatApp.vue
-    utils/
-      helpers.ts
-  package.json
-  tsconfig.json
+  skills
+    poteto-mode
+      SKILL.md
+      playbooks
+        feature.md
+    principle-model-the-domain
+      SKILL.md
+    principle-prove-it-works
+      SKILL.md
 ---
 
-```ts
-import { z } from 'zod'
+<h1>Read the request</h1>
+<p class="trace-request">$poteto-mode Add a theme preference that survives reload.</p>
+<p class="trace-path">Source · skills/poteto-mode/SKILL.md · excerpts</p>
 
-export const userSchema = z.object({
-  id: z.string().uuid(),
-  name: z.string().min(1),
-  email: z.string().email(),
-  role: z.enum(['admin', 'user', 'guest']),
-})
+```md {1|3-4|6-8}
+# Poteto mode
 
-export type User = z.infer<typeof userSchema>
+Match the task to a playbook below, open its file,
+and copy its steps in verbatim.
+…
+- **Feature.** New or changed behavior,
+  built from a named data shape.
+  `playbooks/feature.md`.
 ```
+<div class="trace-action"><span>Agent action · illustrative</span><p>{{ ["Read the request. Adding a saved theme preference is a feature.", "Choose the Feature playbook for this new behavior.", "Open the playbook and copy its steps into the task list."][$clicks] }}</p></div>
+
+::sidebar-bottom::
+
+<PstackWorkflowMap :stage="1" :click="$clicks" />
 
 <!--
-The code-editor layout provides a VS Code-style window with title bar, file tree sidebar, and tabbed code area. Pass files as an indentation-based string and set the active tab.
+TIME: 04:00–04:15 (15s)
+
+- Start here: poteto-mode selected + “Add a theme preference that survives reload.”
+- [click] Read the routing instruction: match task, open playbook, copy steps.
+- [click] New behavior → Feature; other tasks use other playbooks.
+- Markdown becomes the agent’s checklist. This is an illustrative walkthrough.
+
+SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 -->
 
 ---
 layout: code-editor
-project: my-vue-app
-activeFile: useCounter.ts
-tabs: useCounter.ts
+class: pstack-trace
+title: Choose the Feature playbook
+project: One example through Poteto mode
+activeFile: skills/poteto-mode/playbooks/feature.md
+tabs: skills/poteto-mode/playbooks/feature.md
+step: Choose Feature playbook
 files: |
-  src
-    composables/
-      useCounter.ts
-  package.json
+  skills
+    poteto-mode
+      SKILL.md
+      playbooks
+        feature.md
+    principle-model-the-domain
+      SKILL.md
+    principle-prove-it-works
+      SKILL.md
 ---
 
-```ts {all|1|3-5|7-10}
-import { ref, computed } from 'vue'
+<h1>Choose the Feature playbook</h1>
+<p class="trace-path">Source · skills/poteto-mode/playbooks/feature.md · excerpts</p>
 
-export function useCounter(initial = 0) {
-  const count = ref(initial)
-  const double = computed(() => count.value * 2)
-
-  function increment() {
-    count.value++
-  }
-
-  return { count, double, increment }
-}
+```md {1-3|5-6|7-8}
+### Feature
+1. `how` over the affected subsystem.
+2. `architect` for parallel design exploration.
+…
+4. Delegate code-writing to a subagent
+…
+named data shape and its organizing structure per
+**principle-model-the-domain**
 ```
+<div class="trace-action"><span>Agent action · illustrative</span><p>{{ ["Inspect settings and explore the design. Step 3 plans the work.", "Prepare the worker’s scope, data shape, and success criteria.", "Use Model the Domain to guide the preference’s shape."][$clicks] }}</p></div>
+
+::sidebar-bottom::
+
+<PstackWorkflowMap :stage="2" :click="$clicks" />
 
 <!--
-Click-driven code walkthrough: `{all|1|3-5|7-10}` highlights one region per click with a pink accent band — everything else dims, like stepping through code in a review.
+TIME: 04:15–04:35 (20s)
 
-[click] The import line.
-[click] Reactive state.
-[click] The increment action.
+- Start with how — understand the existing settings implementation.
+- Architect — explore competing designs before committing to one.
+- [click] Prepare the worker assignment: scope, data shape, success criteria.
+- [click] Model the Domain — define the shape before delegating code.
+- Let the agent investigate alternatives; I can still join the design discussion.
+
+SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 -->
 
 ---
 layout: code-editor
-project: my-vue-app
-activeFile: schema.ts
-tabs: schema.ts, api.ts@1, App.vue@2
+class: pstack-trace
+title: Read Model the Domain
+project: One example through Poteto mode
+activeFile: skills/principle-model-the-domain/SKILL.md
+tabs: skills/principle-model-the-domain/SKILL.md
+step: Plan and implement · supporting principle
 files: |
-  src
-    schema.ts
-    api.ts
-    App.vue
-  package.json
+  skills
+    poteto-mode
+      SKILL.md
+      playbooks
+        feature.md
+    principle-model-the-domain
+      SKILL.md
+    principle-prove-it-works
+      SKILL.md
 ---
 
-````md magic-move
-```ts
-// schema.ts
-import { z } from 'zod'
+<h1>Plan the preference</h1>
+<p class="trace-path">Source · skills/principle-model-the-domain/SKILL.md · excerpts</p>
 
-export const userSchema = z.object({
-  id: z.string().uuid(),
-  name: z.string().min(1),
-})
-
-export type User = z.infer<typeof userSchema>
+```md {1-3|5-6|8-9}
+# Model the Domain
+Encode the real domain in a data structure instead
+of scattering it across conditionals.
+…
+- A typed object/model instead of loose parameters
+  or repeated shape assumptions.
+…
+Do not force an abstraction. Prefer boring code if the
+current shape is already clear, local, and unlikely to grow.
 ```
+<div class="trace-action"><span>Agent action · illustrative</span><p>{{ ["Choose one preference with three possible values.", "Use this named type in the worker’s assignment.", "Reuse the existing settings model if it fits."][$clicks] }}</p><code class="trace-type">type ThemePreference = 'light' | 'dark' | 'system'</code></div>
 
-```ts
-// api.ts
-import { userSchema, type User } from './schema'
+::sidebar-bottom::
 
-export async function fetchUser(id: string): Promise<User> {
-  const res = await fetch(`/api/users/${id}`)
-  return userSchema.parse(await res.json())
-}
-```
-
-```vue
-<!-- App.vue -->
-<script setup lang="ts">
-import { fetchUser } from './api'
-
-const user = await fetchUser('42')
-</script>
-
-<template>
-  <h1>Hello {{ user.name }}</h1>
-</template>
-```
-````
+<PstackWorkflowMap :stage="3" :click="$clicks" />
 
 <!--
-An editing session across files: Magic Move morphs the code on each click, and the `@N` suffix on tabs (`api.ts@1, App.vue@2`) switches the active tab and file-tree highlight in sync — it reads like really jumping between files in VS Code.
+TIME: 04:35–05:05 (30s)
 
-[click] Switch to api.ts — consume the schema.
-[click] Switch to App.vue — use it in a component.
+- My own habit: think about the domain and types before writing the logic.
+- One theme preference: light | dark | system.
+- [click] Put that named type in the worker assignment; avoid loose assumptions.
+- [click] Keep it simple — reuse the existing settings model if it fits.
+
+SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 -->
 
 ---
 layout: code-editor
-project: my-vue-app
-activeFile: user.ts
-tabs: user.ts
+class: pstack-trace
+title: Implement and review
+project: One example through Poteto mode
+activeFile: skills/poteto-mode/playbooks/feature.md
+tabs: skills/poteto-mode/playbooks/feature.md
+step: Plan and implement
 files: |
-  src
-    user.ts
-  package.json
+  skills
+    poteto-mode
+      SKILL.md
+      playbooks
+        feature.md
+    principle-model-the-domain
+      SKILL.md
+    principle-prove-it-works
+      SKILL.md
 ---
 
-```ts {*} twoslash
-interface User {
-  id: string
-  name: string
-  role: 'admin' | 'editor' | 'viewer'
-}
+<h1>Implement and review</h1>
+<p class="trace-path">Source · skills/poteto-mode/playbooks/feature.md · excerpts</p>
 
-function greet(user: User) {
-  return `Hello ${user.name}!`
-}
+```md {1-2|4|6-7}
+4. Delegate code-writing to a subagent
+…
 
-const alex: User = { id: '1', name: 'Alex', role: 'admin' }
+Review its diff yourself.
 
-const message = greet(alex)
-//    ^?
+5. Verify on the matching surface.
+"Inconclusive" or wrong-surface is not a pass. Flag it.
+```
+<div class="trace-action"><span>Agent action · illustrative</span><p>{{ ["Worker → implement saving and restoring ThemePreference.", "Lead → inspect the diff against the design and requirement.", "Lead → open the app and check persistence across reload."][$clicks] }}</p><div class="trace-flow"><b :class="{ current: $clicks === 0 }">Worker implements</b><span>→</span><b :class="{ current: $clicks === 1 }">Lead reviews</b><span>→</span><b :class="{ current: $clicks === 2 }">Lead verifies</b></div></div>
+
+::sidebar-bottom::
+
+<PstackWorkflowMap :stage="4" :click="$clicks" />
+
+<!--
+TIME: 05:05–05:30 (25s)
+
+- Worker implements saving and restoring the preference.
+- [click] Lead reviews the diff — requirement, design, mistakes.
+- [click] Lead opens the app and checks persistence across reload.
+- The playbook coordinates the work; principles guide the decisions.
+
+SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
+-->
+
+---
+layout: code-editor
+class: pstack-trace
+title: Read Prove It Works
+project: One example through Poteto mode
+activeFile: skills/principle-prove-it-works/SKILL.md
+tabs: skills/principle-prove-it-works/SKILL.md
+step: Verify · supporting principle
+files: |
+  skills
+    poteto-mode
+      SKILL.md
+      playbooks
+        feature.md
+    principle-model-the-domain
+      SKILL.md
+    principle-prove-it-works
+      SKILL.md
+---
+
+<h1>Verify the theme survives reload</h1>
+<p class="trace-path">Source · skills/principle-prove-it-works/SKILL.md · excerpts</p>
+
+```md {1-3|5-7|9}
+# Prove It Works
+Verify every task output by checking the real thing directly.
+Do not infer from proxies, self-reports, or "it compiles."
+…
+1. Build it (necessary but not sufficient)
+2. Run it and exercise the actual feature path
+3. Check the full chain: does data flow from input to output?
+…
+Delegation: trust artifacts, not self-reports.
+```
+<div class="trace-action"><span>Agent action · illustrative</span><p>{{ ["Define the expected result: dark mode remains after reload.", "Switch theme → reload → confirm it stays selected.", "If it resets, fix the change and repeat the check."][$clicks] }}</p></div>
+
+::sidebar-bottom::
+
+<PstackWorkflowMap :stage="5" :click="$clicks" />
+
+<!--
+TIME: 05:30–06:00 (30s)
+
+- Define success: dark mode still selected after reload.
+- [click] Change theme → reload → inspect saved value, control, and appearance.
+- Keep evidence such as screenshots or an action log; inspect the actual result.
+- [click] If it resets: fix and repeat. A worker saying “done” is insufficient.
+
+SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
+-->
+
+---
+layout: default
+class: artwork
+---
+
+# A verification skill for your codebase
+
+<img class="verification-reference" src="/illustrations/poteto-verification-reference.png" alt="Lauren’s diagram: a feature map gives context, a CLI gives control, and together they let the agent verify its own work." />
+<p class="source">Lauren (@poteto) · Cursor Compile recording · 07:05–12:34</p>
+
+<!--
+TIME: 06:00–06:55 (55s)
+
+- [Ask for hands] “Who has an agent that can start your app and check a complete user journey by itself?”
+- [Wait 3–5 seconds; acknowledge the response. Allow 10–15 seconds total.] “That’s the capability I want you to take away today.”
+- Feature map gives context; tools give control. Build this even if you never adopt pstack.
+- Known state → exercise feature → compare result → keep evidence.
+- Now my own example: Outpost Zero.
+
+SOURCE: research/creator-video-analysis.md; Lauren’s video https://x.com/poteto/status/2102050467505430555 (07:05–18:57). Examples are illustrative, not recorded results.
+-->
+
+---
+class: outpost-example
+---
+
+# Generate a skill for Outpost Zero
+
+<p class="outpost-command"><code>$pstack:create-verification-skill</code></p>
+
+<div class="outpost-intro">
+<img src="/verification/outpost-zero/before.png" alt="Outpost Zero before verification: empty defense pads, 210 salvage, and wave zero." />
+<div>
+<p class="outpost-path">.agents/skills/verify-outpost-zero/</p>
+<pre class="outpost-tree">SKILL.md
+features/
+  README.md
+  defenses.md
+  squads.md
+  combat.md
+  missions.md
+  controls.md</pre>
+</div>
+</div>
+<p class="outpost-lifecycle">Launch → Doctor → Drive → Evidence → Cleanup</p>
+
+<!--
+TIME: 06:55–07:30 (35s)
+
+- Lately I spend spare tokens making games — I love tower defense.
+- Built with Vue — “the best JavaScript framework in the world.” [Smile]
+- Run create-verification-skill → local skill plus five feature recipes.
+- Like onboarding QA: defenses, squads, combat, missions, controls.
+- Reuse existing pnpm commands + Computer Use; try a real recipe during generation.
+
+SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; generation session 01a0c8a0-4b74-7460-a338-7ff884a568cb. Screenshot: generation proof before.png.
+-->
+
+---
+class: outpost-example outpost-feature-file
+---
+
+# One feature file: defenses.md
+
+<p class="outpost-file">features/defenses.md <span>· shortened from the local file</span></p>
+
+```md
+# Build, upgrade, and recycle defenses
+Spend salvage on towers and upgrades; confirm a sale to recover part.
+
+## How to get to it
+Select defense pad A1 to open its build, upgrade, and sale menu.
+
+## Driving it with Computer Use
+Start a fresh game at wave 0, before launching combat.
+- Build Coil Sentry → visible tower; salvage drops by 85.
+- Upgrade to Railgun Battery → new art and stats; costs 80.
+- Cancel the sale → tower and balance stay unchanged.
+- Confirm the sale → empty pad; refund 99 salvage, once.
+
+## Gotchas
+Check before combat: kills change salvage. Inspect the tower visually.
 ```
 
 <!--
-TwoSlash gives real VS Code hovers: move the mouse over any identifier during the talk and the actual TypeScript type pops up. The `^?` query pins the type of `message` permanently. Syntax: ```ts {*} twoslash — the {*} is required (Slidev drops the twoslash flag without it).
+TIME: 07:30–08:20 (50s)
+
+- Feature map gives the agent context — what to do and what success looks like.
+- Show the Markdown file: purpose, how to reach the feature, steps, expected results, gotchas.
+- Shortened from the local Outpost Zero defenses.md; the original also covers other towers and selection methods.
+- Check visible tower AND resource balance; do this before combat changes the numbers.
+- Same idea for a shop: explain the cart and checkout journey.
+- A mapped feature is a recipe; it still needs to be exercised.
+
+SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; generated features/README.md and features/defenses.md.
 -->
 
 ---
-
-# Rough / Excalidraw Diagrams
-
-Hand-drawn style diagrams using rough.js primitives:
-
-<RoughSvg :width="700" :height="300" :padding="20" :roughness="1.2" :seed="42">
-  <!-- Boxes -->
-  <RoughRect :x="0" :y="60" :width="160" :height="80" variant="default" />
-  <RoughText :x="80" :y="100" variant="label">Client</RoughText>
-
-  <RoughRect :x="270" :y="60" :width="160" :height="80" variant="accent" />
-  <RoughText :x="350" :y="100" variant="label">API Server</RoughText>
-
-  <RoughRect :x="540" :y="60" :width="160" :height="80" variant="success" />
-  <RoughText :x="620" :y="100" variant="label">Database</RoughText>
-
-  <!-- Arrows -->
-  <RoughArrow :x1="160" :y1="100" :x2="270" :y2="100" />
-  <RoughArrow :x1="430" :y1="100" :x2="540" :y2="100" />
-
-  <!-- Labels -->
-  <RoughText :x="215" :y="80" variant="edgeLabel">REST</RoughText>
-  <RoughText :x="485" :y="80" variant="edgeLabel">SQL</RoughText>
-
-  <!-- Additional shapes -->
-  <RoughCircle :x="80" :y="230" :diameter="70" variant="danger" />
-  <RoughText :x="80" :y="230" variant="subtitle">Error</RoughText>
-
-  <RoughEllipse :x="270" :y="230" :width="140" :height="60" variant="muted" />
-  <RoughText :x="270" :y="230" variant="subtitle">Cache</RoughText>
-
-  <!-- Dashed line -->
-  <RoughLine :x1="160" :y1="230" :x2="200" :y2="230" stroke-dasharray="6 4" />
-</RoughSvg>
-
-<!--
-All Rough components (RoughRect, RoughCircle, RoughEllipse, RoughLine, RoughArrow, RoughPath, RoughText) are available. Wrap them in a RoughSvg container that provides the rough.js context. Use variant prop for consistent coloring.
--->
-
----
-layout: section
----
-
-# Diagram & UI Components
-
----
-
-# Declarative Diagrams
-
-`RoughNode` registers itself by `id` — `RoughEdge` finds both ends automatically. No arrow coordinates.
-
-<RoughSvg :width="700" :height="200" :padding="20">
-  <RoughNode id="client" :x="0" :y="50" label="Client" sublabel="Vue 3" />
-  <RoughNode id="api" :x="270" :y="50" label="API Server" variant="accent" />
-  <RoughNode id="db" :x="540" :y="50" label="Database" variant="success" shape="ellipse" />
-  <RoughEdge from="client" to="api" label="REST" />
-  <RoughEdge from="api" to="db" label="SQL" />
-</RoughSvg>
-
-<!--
-Nodes register their bounding box in a shared registry provided by RoughSvg. Edges look up both ids and compute their own anchor points — move a node and every connected arrow follows.
--->
-
----
+class: outpost-example outpost-proof
 clicks: 3
 ---
 
-# Diagrams That Build Up
+# The agent plays and keeps the evidence
 
-Give nodes and edges a `step` — they appear one click at a time (`clicks: 3` in frontmatter).
-
-<RoughSvg :width="700" :height="280" :padding="20">
-  <RoughNode id="browser" :x="0" :y="20" label="Browser" />
-  <RoughNode id="server" :x="270" :y="20" label="Server" variant="accent" :step="1" />
-  <RoughEdge from="browser" to="server" label="HTTP" :step="1" />
-  <RoughNode id="postgres" :x="540" :y="20" label="Postgres" variant="success" :step="2" />
-  <RoughEdge from="server" to="postgres" label="SQL" :step="2" />
-  <RoughNode id="redis" :x="270" :y="180" :height="70" label="Redis" variant="danger" :step="3" />
-  <RoughEdge from="server" to="redis" label="cache" :step="3" stroke-dasharray="6 4" />
-</RoughSvg>
+<div class="outpost-proof-caption" aria-live="polite">
+<span v-if="$clicks === 0">Build Coil Sentry <strong>210 → 125 salvage</strong></span>
+<span v-else-if="$clicks === 1">Upgrade to Railgun Battery <strong>125 → 45 salvage</strong></span>
+<span v-else-if="$clicks === 2">Sale confirmation <strong>99 salvage refund offered</strong></span>
+<span v-else>Confirm sale <strong>45 → 144 salvage · empty pad</strong></span>
+</div>
+<img v-if="$clicks === 0" class="outpost-evidence" src="/verification/outpost-zero/built.png" alt="Built Coil Sentry on A1 with 125 salvage remaining." />
+<img v-else-if="$clicks === 1" class="outpost-evidence" src="/verification/outpost-zero/upgraded.png" alt="Upgraded Railgun Battery on A1 with 45 salvage remaining." />
+<img v-else-if="$clicks === 2" class="outpost-evidence" src="/verification/outpost-zero/sale-confirmation.png" alt="Railgun Battery sale confirmation offering a 99 salvage refund." />
+<img v-else class="outpost-evidence" src="/verification/outpost-zero/sold.png" alt="A1 is empty after confirming the sale, with 144 salvage." />
+<p class="outpost-proof-footer">Screenshots + accessibility snapshots + action log · retained after cleanup</p>
 
 <!--
-[click] The server appears with its HTTP edge.
-[click] Then the database.
-[click] Then the cache layer, connected with a dashed edge.
+TIME: 08:20–09:10 (50s)
+
+- Real generation-run evidence: build tower, salvage 210 → 125.
+- [click] Upgrade: changed tower sprite, 125 → 45.
+- [click] Sale dialog: 99 refund offered; cancellation kept tower + 45, recorded in the log.
+- [Before the final click, ask] “Suppose the tower disappears after selling it. Is that enough to prove selling works?” [Wait 3–5 seconds for an answer.]
+- “Check the refund too.” [click] Empty pad AND 144 salvage; revisit to check no double refund.
+- Screenshots + action log support this path; they do not prove the whole game.
+
+SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; generation actions.md and built.png, upgraded.png, sale-confirmation.png, sold.png. Cancellation has a text snapshot, not a separate screenshot.
 -->
 
 ---
-clicks: 3
+class: outpost-example
 ---
 
-# One-Line Pipelines
+# Reuse it with a simple request
 
-`RoughFlow` lays out a whole pipeline from a single string — `stepped` reveals it click by click.
+<blockquote class="outpost-prompt">“Verify and do a smoke test if this game works.”</blockquote>
 
-<RoughFlow nodes="Commit -> Build -> Test -> Deploy" :edge-labels="['push', 'CI', 'CD']" stepped />
-
-<RoughFlow
-  class="mt-4"
-  :nodes="[
-    { label: 'Idea', variant: 'muted' },
-    { label: 'Prototype', variant: 'accent' },
-    { label: 'Ship it', variant: 'success', sublabel: 'v1.0' },
-  ]"
-/>
+<p class="outpost-reuse">Read the local skill → Follow the recipes → Report the evidence</p>
+<div class="outpost-result"><strong>11 tests passed</strong><span>5 unit · 3 browser · 3 end-to-end</span></div>
+<p class="outpost-observed">Browser checks: render, build, upgrade, sale confirmation.</p>
+<p class="outpost-limit">Manual checks stopped during concurrent Chrome use.<br>Full combat progression and audio remained unverified.</p>
 
 <!--
-The string form is the fastest way to get a pipeline on a slide. The array form gives per-node variants and sublabels. Direction can be vertical too.
+TIME: 09:10–09:50 (40s)
+
+- Next session: just “Verify and do a smoke test if this game works.”
+- Agent reads the saved skill + recipes; no repeated UI walkthrough from me.
+- 11 existing tests passed; browser checks reached sale confirmation.
+- Concurrent Chrome use interrupted the run; combat and audio remained unchecked.
+- Context is reusable — and the report tells me what was actually checked.
+
+SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; smoke session 01a0c8b1-99da-7231-bcc5-6ab19785ea34. Prompt spelling normalized. These are existing tests, not tests generated by the skill. Manual cancellation and completed sale belong to the earlier generation run; the later smoke run did not manually complete those actions.
 -->
 
 ---
-clicks: 2
+class: outpost-example
 ---
 
-# TerminalWindow
+# Pstack maintains the feature map too
 
-<TerminalWindow
-  title="~/my-vue-app"
-  stepped
-  :lines="[
-    { cmd: 'pnpm create vue@latest', output: '✔ Scaffolding project in ./my-vue-app' },
-    { cmd: 'pnpm install', output: 'Done in 4.2s' },
-    { cmd: 'pnpm dev', output: 'VITE v6.0.0  ready in 320 ms\n➜  Local: http://localhost:5173/' },
-  ]"
-/>
+<p class="outpost-command"><code>/maintain-verification-skill</code></p>
+<div class="outpost-maintenance">
+<p><strong>01</strong><span>Read the source for each feature</span></p>
+<p><strong>02</strong><span>Exercise every mapped feature in the app</span></p>
+<p><strong>03</strong><span>Prove corrections to the skill and map</span></p>
+</div>
+<p class="outpost-gotcha">Stale instructions → update them. Product bug → report it.</p>
+<p class="source">Automated when invoked · maintenance workflow, not a recorded run</p>
 
 <!--
-Each click reveals the next command + output. Without the lines prop it renders the default slot, so you can also paste arbitrary content into the frame.
+TIME: 09:50–10:20 (30s)
+
+- As the app changes, the feature map gets stale.
+- Invoke maintain-verification-skill: inspect source → exercise app → prove map corrections.
+- Update stale instructions; report actual product bugs.
+- Optional idea from my rehearsal: schedule maintenance; it is not automatic today.
+- Takeaway: maintain the verification context alongside the product.
+
+SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; installed pstack 0.15.2 maintain-verification-skill. No maintenance run was found in the two game sessions. Outcomes: clean, changed, or blocked; edits restricted to the verification skill directory.
 -->
 
 ---
-
-# Terminal Recordings (VHS)
-
-Scripted clips rendered from `recordings/*.tape` — deterministic, re-renderable, no live-demo risk.
-
-<SlidevVideo autoplay muted loop controls class="h-90 mx-auto mt-2 rounded-lg overflow-hidden">
-  <source src="/recordings/claude-code-template.webm" type="video/webm" />
-</SlidevVideo>
-
-<!--
-This clip is fake: a VHS tape types the prompt while a shell shim paints the Claude Code banner and streams scripted turns. Copy a template pair from starter/recordings (Claude Code or Copilot CLI), script your turns, then `vhs <name>.tape` — the webm lands in public/recordings/. See agent_docs/terminal-recordings.md.
--->
-
+class: useful-skills
 ---
 
-# BrowserWindow
+# More pstack skills worth trying
 
-<BrowserWindow src="https://alexop.dev" height="360px" />
-
-<!--
-Pass src for a live iframe, or drop a screenshot / any content into the default slot. The url prop overrides what the address bar shows.
--->
-
----
-
-# Annotate Anything
-
-Hand-drawn callouts over any content — position inside a `relative` container, reveal with `v-click`.
-
-<div class="relative w-fit mx-auto mt-4">
-
-```ts
-export function useCounter() {
-  const count = ref(0)
-  const double = computed(() => count.value * 2)
-  return { count, double }
-}
-```
-
-<Annotate v-click type="circle" :x="108" :y="10" :width="76" :height="32" label="reactive state" label-position="right" />
-<Annotate v-click type="underline" :x="113" :y="29" :width="225" :height="24" label="derived" label-position="right" variant="success" />
-
+<div class="useful-skill-grid">
+<a class="useful-skill-card" href="https://github.com/cursor/plugins/blob/main/pstack/skills/unslop/SKILL.md">
+<div class="useful-skill-art" role="img" aria-label="Hamcrab trims a long, wordy page with scissors." style="background-position: 0% 0%"></div>
+<div><code>/unslop</code><p>Trim the fluff</p></div>
+</a>
+<a class="useful-skill-card" href="https://github.com/cursor/plugins/blob/main/pstack/skills/technical-writing/SKILL.md">
+<div class="useful-skill-art" role="img" aria-label="Hamcrab organizes notes into a structured instruction manual." style="background-position: 100% 0%"></div>
+<div><code>/technical-writing</code><p>Make it clear</p></div>
+</a>
+<a class="useful-skill-card" href="https://github.com/cursor/plugins/blob/main/pstack/skills/how/SKILL.md">
+<div class="useful-skill-art" role="img" aria-label="Hamcrab examines connected gears through a magnifying glass." style="background-position: 0% 100%"></div>
+<div><code>/how</code><p>Understand the system</p></div>
+</a>
+<a class="useful-skill-card" href="https://github.com/cursor/plugins/blob/main/pstack/skills/blast-radius/SKILL.md">
+<div class="useful-skill-art useful-skill-art-blast" role="img" aria-label="Hamcrab checks a diagram showing how one changed module affects two connected modules."></div>
+<div><code>/blast-radius</code><p>Trace the impact</p></div>
+</a>
 </div>
 
 <!--
-Types: circle, rect, underline, arrow. Great for pointing at parts of screenshots or code during a talk.
+TIME: 10:20–11:00 (40s)
+
+- Pstack also has useful skills you can invoke individually.
+- Unslop edits writing: removes stock AI phrases while preserving meaning and tone.
+- Technical-writing chooses the right document structure and makes instructions precise. Useful for READMEs, technical docs, RFCs, and PR descriptions.
+- How explains an unfamiliar subsystem before you change it.
+- Blast-radius looks beyond the diff and asks the agent to run code to test the safety assumptions. Unproven claims must stay marked unproven.
+- You can try one skill without adopting the entire workflow. These are upstream Cursor command names.
+
+SOURCE: research/raw/2026-09-22-pstack-useful-skills.md; research/wiki/audience-resources.md. Upstream SKILL.md files fetched at a pinned commit on 2026-09-22. Selection is the presenter’s recommendation, not a comparative benchmark.
 -->
 
 ---
-clicks: 3
+class: resource-summary
 ---
 
-# Steps
+# Build your own reliable agent stack
 
-Talk roadmap or process indicator, driven by clicks.
-
-<Steps class="mt-14" :steps="['Problem', 'Idea', 'Build', 'Ship']" />
+<div class="summary-grid">
+<div class="summary-copy">
+<h2>Check out pstack</h2>
+<p>Read the workflow. Try it.<br>Make it yours.</p>
+<a class="summary-repo" href="https://github.com/cursor/plugins/tree/main/pstack">github.com/cursor/plugins → pstack</a>
+<p class="summary-takeaway">Give your agent a way<br>to prove its work.</p>
+</div>
+<a class="summary-qr" href="https://gist.github.com/alexanderop/743bbd811f2a56063fb79d3b3847ec27">
+<img src="/resources/pstack-resources-qr.png" alt="Scan for pstack installation instructions, the slides, PDF, and all talk resources." />
+<strong>Everything to get started</strong>
+<span>Install · Slides · PDF · Resources</span>
+</a>
+</div>
 
 <!--
-Each click advances the active step. Pass the active prop instead for a static indicator.
+TIME: 11:00–12:00 (60s)
+
+- Invest in verification, reusable engineering skills, and codebase design.
+- Check out pstack: read the workflow, try a small task, adapt it to your project.
+- My first step for you: give your agent a feature map and tools to prove its work.
+- Scan the QR: installation instructions, this deck, the PDF, and the source resources.
+- [Pause so people can scan.] The same code stays on screen during questions.
+
+SOURCE: research/raw/2026-09-22-pstack-installation.md; research/wiki/audience-resources.md. Summary is the presenter’s synthesis. Resource gist: https://gist.github.com/alexanderop/743bbd811f2a56063fb79d3b3847ec27
 -->
 
 ---
+layout: default
+title: Thank you!
+---
 
-# Comparison
-
-<Comparison left-title="❌ Options API" right-title="✅ Composition API">
-
-<template #left>
-
-- Logic scattered across options
-- Hard to extract & reuse
-- `this` everywhere
-
-</template>
-
-<template #right>
-
-- Logic grouped by feature
-- Composables are just functions
-- Full TypeScript support
-
-</template>
-
-</Comparison>
+<DancingHamcrab />
+<a class="finale-resources" href="https://gist.github.com/alexanderop/743bbd811f2a56063fb79d3b3847ec27">
+<img src="/resources/pstack-resources-qr.png" alt="Scan for installation, slides, PDF, and resources." />
+<span>Slides, PDF &amp; resources</span>
+</a>
 
 <!--
-Titles and variants are configurable — leftVariant / rightVariant accept the same variants as the Rough components.
--->
+TIME: END
 
----
-layout: section
----
+- Thank you! Leave the mascot dancing during questions.
+- Silent, repeating 16-pose adaptation of the first two eight-count phrases.
 
-# Questions?
-
----
-layout: end
----
-
-# Thank You!
-
-Find the source at [github.com/alexanderopalic](https://github.com/alexanderopalic)
-
-<!--
-Thanks for watching! This presentation was built with the @alexop/slidev-theme-brand theme and @alexop/slidev-addon-utils addon.
+SOURCE: research/wiki/dance-finale.md; research/hamcrab-judas-prompt.md. Generated mascot sprites based on the user-supplied reference. Choreography adapted from Gustavo Krystal Dance's original music-video tutorial, not an exact reconstruction.
 -->

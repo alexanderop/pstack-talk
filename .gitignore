@@ -34,3 +34,6 @@ Thumbs.db
 # Export outputs
 slides-export.pdf
 slides-export/
+
+# Vercel local project link
+.vercel/

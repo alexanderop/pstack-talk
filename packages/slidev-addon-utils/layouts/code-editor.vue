@@ -7,6 +7,9 @@
       <!-- Sidebar -->
       <div class="editor-sidebar">
         <EditorFileTree :tree="treeData" />
+        <div v-if="$slots['sidebar-bottom']" class="editor-sidebar-bottom">
+          <slot name="sidebar-bottom" />
+        </div>
       </div>
 
       <!-- Main area -->
@@ -161,6 +164,8 @@ useMutationObserver(editorCodeRef, () => {
 }
 
 .editor-sidebar {
+  display: flex;
+  flex-direction: column;
   width: 180px;
   background: rgba(52, 63, 96, 0.2);
   border-left: 1px solid rgba(171, 75, 153, 0.15);
@@ -168,6 +173,8 @@ useMutationObserver(editorCodeRef, () => {
   overflow: hidden;
   order: 1;
 }
+
+.editor-sidebar-bottom { margin-top: auto; }
 
 .editor-main {
   flex: 1;

@@ -1,0 +1,11 @@
+# Poteto mode overview
+
+Generated with the built-in imagegen tool on 2026-09-22.
+Asset: `../public/diagrams/poteto-mode-overview.png`.
+
+## Initial prompt
+
+Use case: infographic-diagram. Generate a finished landscape 2:1 diagram for a dark technical blog and Slidev talk. Flat near-black #111111 background. Clean Excalidraw-like slightly irregular white pen outlines, large legible handwritten white text, restrained bright pink #ff6bed accents. Spacious minimalist state-machine-style overview, no gradients, shadows, glow, texture, mascot, watermark or title. Four large rounded rectangular states arranged left to right across the middle, connected by white rightward arrows. Exact state labels: "Read request", "Choose Feature playbook" (wrap on two lines), "Plan and implement" (wrap on two lines), "Verify". Under the third state, small white text "Delegate + review". A pink return connector runs ABOVE the row from the TOP of Verify back to the TOP of Plan and implement, arrowhead pointing INTO Plan and implement. Label it "Fix and recheck". Beneath the state row, two smaller unboxed supporting annotations in pink: "Model the Domain" beneath the Plan and implement state, and "Prove It Works" beneath Verify. Connect each annotation to its own state with a short subtle pink dotted line, no arrowheads. Label this lower annotation area once, at lower left, "Supporting principles". Keep these annotations visually distinct from the main state boxes: they are guidance, not workflow states. No start or end nodes, no other arrows, no extra states or text. Comfortable 6% outer margin. This is a simplified feature example, not a literal executable engine. Use large text that reads well when the diagram is displayed at 900px wide.
+## Final refinement prompt
+
+Refine this diagram for projection on a dark slide. Preserve every exact label, box position, arrow direction and relationship. Replace ALL gray box fills, white halos, noisy stippling, bevels, shadows and glows with a perfectly flat solid opaque #111111 background and box interiors. Thin clean slightly wobbly white pen outlines and solid white handwritten labels. Pink #ff6bed for the return arrow and supporting-principle labels. No transparency, no texture, no gradients. The result must look like a sparse clean Excalidraw digital whiteboard. Keep the same landscape composition and all text.
