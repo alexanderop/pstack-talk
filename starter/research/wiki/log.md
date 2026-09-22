@@ -140,3 +140,23 @@ Captured the supplied profile and checked the upstream pstack README and React t
 ## [2026-09-22] maintenance | Defense feature Markdown example
 
 Replaced the defense economy table with a compact Markdown example after reading the original Outpost Zero `features/defenses.md` on disk. Preserved its navigation, driving steps, observable outcomes, and gotchas; marked the slide as shortened. Existing source capture already contains the original recipe.
+
+## [2026-09-22] maintenance | Skills composed into playbooks
+
+Added a three-click composition slide after the pstack structure overview, grounded in the existing pinned Feature source. Generated a manual, blueprint and Hamcrab illustration with prompt provenance in `research/skill-composition-prompts.md`. Native labels distinguish named skills from later workflow steps. Updated presenter timing to 12:25 across 24 timed slides, plus cover and finale. No new source ingestion required.
+
+## [2026-09-22] ingest | Actual Feature review responsibilities
+
+Captured six upstream files at one pinned commit in `raw/2026-09-22-pstack-feature-review.md`. Clarified lead diff review, arena cross-judging, conditional interrogate, PR-opening subagent requirements, and the separate babysit trigger in agent-workflow. The current slide's “Implement & review” remains a valid simplification; no slide changes made. Source describes intended behavior, not evidence of compliance by an actual agent run.
+
+## [2026-09-22] ingest | Review criteria and security coverage
+
+Captured the interrogate rubric, code-quality lens, mode wrapper, agent wrapper and Prove It Works at the review-source commit. Clarified that mandatory default lead diff review does not explicitly load the detailed interrogate security rubric. General quality principles and runtime verification are present; systematic security coverage cannot be inferred from the default review instruction.
+
+## [2026-09-22] maintenance | Explicit author and reviewer roles
+
+Changed the composition slide to Worker implements · Lead reviews. Added notes distinguishing upstream conditional interrogate criteria from the recommended explicit baseline rubric for an audience-owned playbook. Kept the longer adaptation as optional elaboration within the existing timing.
+
+## [2026-09-22] ingest | Repository screenshot after creator
+
+Preserved the user-supplied GitHub screenshot unchanged and added it immediately after Lauren’s introduction. Adds a visual view of the repository layout; challenges no prior claim. No new factual question. Updated creator synthesis and source record. Added 15 seconds, bringing the deck to 25 timed slides, 12:40 total, plus cover and finale.

@@ -40,3 +40,7 @@ A 40-second slide before the summary introduces standalone unslop, technical-wri
 The untimed TypeScript Meetup Munich Oktoberfest event cover precedes the talk title. The 23 timed slides still total 12 minutes; with the cover and dancing finale there are 25 slides.
 
 A 15-second creator introduction precedes the pstack structure overview, using the supplied profile screenshot on the right. The plugin introduction now takes 20 seconds, preserving the 12-minute total. See [creator](wiki/creator.md).
+
+The skill-composition slide follows “How pstack organizes agent work” and precedes “Invoke poteto-mode”. It adds 25 seconds: the current deck now has 24 timed slides, 12:25 total, plus the untimed cover and finale (26 slides). Earlier counts above describe prior revisions.
+
+The user-supplied repository screenshot now follows the creator introduction. Current deck: 25 timed slides, 12:40 total, plus untimed cover and finale (27 slides).

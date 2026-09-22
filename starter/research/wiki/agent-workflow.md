@@ -28,6 +28,20 @@ The September 22 rehearsal motivates the talk with the gap between better models
 
 The automatic transcript conflates the generation proof with the later smoke request. Keep them distinct in delivery: the complete build/upgrade/sale proof belongs to generation; the later smoke run stopped at sale confirmation. Scheduling maintenance is a proposed use, not a built-in background job. The final planning slide was not rehearsed and keeps cues derived from its existing notes. [Rehearsal](../raw/2026-09-22-talk-rehearsal.md), [run evidence](../raw/2026-09-22-outpost-zero-verification.md)
 
+A composition slide now follows the Skills / Playbooks / Principles overview. Separate manual and blueprint illustrations represent reusable skills, with connections to the first two Feature steps. The playbook adds sequencing and subsequent implementation, review and verification. This is a teaching simplification, not an executable graph. [Feature source](../raw/2026-09-22-pstack-feature-trace.md)
+
+## Review responsibilities
+
+The upstream Feature playbook explicitly separates code-writing delegation from the lead's review of the resulting diff. When an implementation admits multiple valid shapes, it routes delegation through arena: candidates produce alternatives, a separate read-only cross-judge scores them, and the parent independently reads and scores every candidate before selection and synthesis. The synthesized result is then verified. [Review source](../raw/2026-09-22-pstack-feature-review.md)
+
+Feature calls interrogate when design is contested. Interrogate gives independent model reviewers the same intent, diff and rubric, deduplicates findings, and requires lead judgment; it returns a verdict without automatically applying changes. The Opening a PR playbook separately requires a subagent that opens a PR to run interrogate, deslop and no-comments. General PR preparation runs deslop before commit and no-comments before review. Opening a PR does not itself start babysitting; that is a separate user-requested pass. [Review source](../raw/2026-09-22-pstack-feature-review.md)
+
+For the talk, “worker implements → lead reviews the diff → verify behavior” captures the default responsibility split. Arena and interrogate are additional named review mechanisms with their own triggers. Do not label the generic review step as an always-run interrogate skill or imply a guaranteed automated review engine. [Review source](../raw/2026-09-22-pstack-feature-review.md)
+
+The default lead review has no explicit instruction in Feature or the Poteto Mode wrapper to apply the interrogate rubric on every change. The wrapper supplies general engineering principles and artifact-based verification. Interrogate explicitly loads a rubric including correctness, structure, complexity, verification and traceable security issues (input-to-sink paths, authentication/authorization, secrets and TOCTOU). Therefore author/reviewer separation does not establish that every feature receives this security checklist. This is a bounded reading of these instructions, not a claim that the model cannot independently check security. [Review criteria source](../raw/2026-09-22-pstack-review-criteria.md)
+
+The composition slide now names the responsibility split as “Worker implements · Lead reviews”. Its speaker notes recommend an explicit baseline review rubric for the audience’s own playbooks, covering correctness, security, maintainability and tests, followed by fixes, another review and behavioral verification. This is a proposed adaptation, not a claim that upstream Feature always loads interrogate’s rubric. [Review criteria source](../raw/2026-09-22-pstack-review-criteria.md)
+
 ## Claims and evidence
 
 - Skills describe jobs; playbooks organize tasks; principles guide decisions. [Source deck](../raw/pstack-source-slides.md)

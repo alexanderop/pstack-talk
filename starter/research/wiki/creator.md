@@ -2,7 +2,9 @@
 
 ## Current synthesis
 
-Introduce Lauren Tan (@poteto) immediately before the pstack structure overview, using the supplied profile screenshot in the right column. Her React Compiler work and experience at Cursor, Meta, and Netflix explain the engineering background behind the workflow. [Source observations and screenshot](../raw/2026-09-22-pstack-creator.md)
+Introduce Lauren Tan (@poteto) before the repository screenshot and pstack structure overview, using the supplied profile screenshot in the right column. Her React Compiler work and experience at Cursor, Meta, and Netflix explain the engineering background behind the workflow. [Source observations and screenshot](../raw/2026-09-22-pstack-creator.md)
+
+A full-slide repository screenshot now follows the creator introduction. It shows the files behind the workflow before the conceptual structure overview. [Supplied screenshot](../raw/2026-09-22-pstack-repository-screenshot.md)
 
 ## Claims and evidence
 

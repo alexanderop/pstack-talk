@@ -236,6 +236,25 @@ SOURCE: https://github.com/cursor/plugins/tree/main/pstack and https://react.dev
 -->
 
 ---
+layout: none
+hideFooter: true
+title: Pstack on GitHub
+---
+
+<h1 class="sr-only">Pstack on GitHub</h1>
+<img src="/creator/pstack-github-repository.png" alt="GitHub’s cursor/plugins repository open to pstack, showing its agents, assets, automations, docs and skills folders and README." class="absolute inset-0 h-full w-full object-contain" />
+
+<!--
+TIME: 03:00–03:15 (15s)
+
+- This is pstack in Cursor’s public plugins repository.
+- The workflow is available as files we can read: agents, skills and documentation.
+- Let’s look at how those pieces fit together.
+
+SOURCE: User-supplied GitHub screenshot, preserved unchanged in public/creator/pstack-github-repository.png. Source record: research/raw/2026-09-22-pstack-repository-screenshot.md. Repository counts and relative dates are part of the supplied capture, not live claims.
+-->
+
+---
 
 # How pstack organizes agent work
 
@@ -258,7 +277,7 @@ SOURCE: https://github.com/cursor/plugins/tree/main/pstack and https://react.dev
 </div>
 
 <!--
-TIME: 03:00–03:25 (25s)
+TIME: 03:15–03:40 (25s)
 
 - Pstack: Lauren’s workflow, published as poteto — files we can read and adapt.
 - [click] Skills = how to do a particular job.
@@ -272,6 +291,48 @@ SOURCE: See research/workflow-narrative.md. The four-stage loop and fork recomme
 -->
 
 ---
+class: skill-composition-slide
+clicks: 3
+---
+
+# Playbooks compose skills into a workflow
+
+<div class="skill-composition">
+<div v-click="1" class="composition-skills">
+<h2>Reusable skills</h2>
+<div class="composition-skill"><img src="/illustrations/skill-how-manual.png" alt="Open instruction manual with a magnifying glass." /><div><strong>how</strong><p>Understand existing code</p></div></div>
+<div class="composition-skill"><img src="/illustrations/skill-architect-blueprint.png" alt="Blue blueprint showing alternative designs." /><div><strong>architect</strong><p>Explore possible designs</p></div></div>
+</div>
+<svg v-click="2" class="composition-connections" viewBox="0 0 860 350" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M 338 90 C 383 90 401 79 445 79 M 433 71 L 445 79 L 433 87"/><path d="M 338 180 C 388 180 394 145 445 145 M 433 137 L 445 145 L 433 153"/></g></svg>
+<img v-click="2" class="composition-mascot" src="/illustrations/hamcrab-compose-skills.png" alt="Hamcrab holds a blueprint toward the Feature playbook." />
+<section v-click="2" class="composition-playbook">
+<h2>Feature playbook</h2>
+<ol>
+<li><span>Understand</span><code>how</code></li>
+<li><span>Explore designs</span><code>architect</code></li>
+<li v-click="3" class="composition-review"><span>Worker implements ·<br />Lead reviews</span></li>
+<li v-click="3"><span>Verify</span></li>
+</ol>
+<p class="composition-caption">Simplified Feature workflow</p>
+</section>
+</div>
+<p v-click="3" class="composition-takeaway">Skills explain <strong>how</strong>. The playbook decides <strong>when</strong>.</p>
+
+<!--
+TIME: 03:40–04:05 (25s)
+
+- [click] Each skill is useful on its own: how explains the existing code; architect explores designs.
+- [click] A playbook composes these reusable skills into a workflow for a task. Feature starts with how, then architect.
+- [click] The worker implements; the lead reviews the diff. Verification checks the actual behavior.
+- The Feature playbook assigns review to the lead. The detailed review criteria, including security, live in interrogate, which runs under specific conditions. When building your own workflow, define both who reviews and what they check.
+- Optional elaboration: for your own playbook, worker implements → lead reviews using a named rubric (correctness, security, maintainability, tests) → fix findings and review again → verify actual behavior. This is our recommendation; the default upstream Feature review does not explicitly load that rubric. Multiple model reviewers can remain conditional.
+- This is a simplified example. The full playbook includes a throughput checkpoint, delegation, ordered commits, conditional interrogation and Opening a PR. Architect can be skipped with an explicit reason.
+- These are instructions interpreted by the agent, not deterministic function calls.
+
+SOURCE: research/raw/2026-09-22-pstack-feature-trace.md, skills/poteto-mode/playbooks/feature.md; research/wiki/agent-workflow.md; research/raw/2026-09-22-pstack-feature-review.md; research/raw/2026-09-22-pstack-review-criteria.md. Artwork is a teaching metaphor; prompts in research/skill-composition-prompts.md.
+-->
+
+---
 layout: default
 class: artwork
 ---
@@ -281,7 +342,7 @@ class: artwork
 <img class="entry-image" src="/illustrations/poteto-mode-entry.png" alt="Prompt composer with the poteto-mode skill selected." />
 
 <!--
-TIME: 03:25–03:40 (15s)
+TIME: 04:05–04:20 (15s)
 
 - Select poteto-mode explicitly, then describe the request.
 - One entry point routes the work — no need to memorize every playbook.
@@ -302,7 +363,7 @@ class: poteto-overview
 <p class="poteto-overview-caption">The overview first. Then the instructions behind it.</p>
 
 <!--
-TIME: 03:40–04:00 (20s)
+TIME: 04:20–04:40 (20s)
 
 - Read request → choose Feature → plan and implement → verify.
 - The playbook brings in supporting skills and principles as needed.
@@ -353,7 +414,7 @@ and copy its steps in verbatim.
 <PstackWorkflowMap :stage="1" :click="$clicks" />
 
 <!--
-TIME: 04:00–04:15 (15s)
+TIME: 04:40–04:55 (15s)
 
 - Start here: poteto-mode selected + “Add a theme preference that survives reload.”
 - [click] Read the routing instruction: match task, open playbook, copy steps.
@@ -403,7 +464,7 @@ named data shape and its organizing structure per
 <PstackWorkflowMap :stage="2" :click="$clicks" />
 
 <!--
-TIME: 04:15–04:35 (20s)
+TIME: 04:55–05:15 (20s)
 
 - Start with how — understand the existing settings implementation.
 - Architect — explore competing designs before committing to one.
@@ -455,7 +516,7 @@ current shape is already clear, local, and unlikely to grow.
 <PstackWorkflowMap :stage="3" :click="$clicks" />
 
 <!--
-TIME: 04:35–05:05 (30s)
+TIME: 05:15–05:45 (30s)
 
 - My own habit: think about the domain and types before writing the logic.
 - One theme preference: light | dark | system.
@@ -504,7 +565,7 @@ Review its diff yourself.
 <PstackWorkflowMap :stage="4" :click="$clicks" />
 
 <!--
-TIME: 05:05–05:30 (25s)
+TIME: 05:45–06:10 (25s)
 
 - Worker implements saving and restoring the preference.
 - [click] Lead reviews the diff — requirement, design, mistakes.
@@ -555,7 +616,7 @@ Delegation: trust artifacts, not self-reports.
 <PstackWorkflowMap :stage="5" :click="$clicks" />
 
 <!--
-TIME: 05:30–06:00 (30s)
+TIME: 06:10–06:40 (30s)
 
 - Define success: dark mode still selected after reload.
 - [click] Change theme → reload → inspect saved value, control, and appearance.
@@ -576,7 +637,7 @@ class: artwork
 <p class="source">Lauren (@poteto) · Cursor Compile recording · 07:05–12:34</p>
 
 <!--
-TIME: 06:00–06:55 (55s)
+TIME: 06:40–07:35 (55s)
 
 - [Ask for hands] “Who has an agent that can start your app and check a complete user journey by itself?”
 - [Wait 3–5 seconds; acknowledge the response. Allow 10–15 seconds total.] “That’s the capability I want you to take away today.”
@@ -612,7 +673,7 @@ features/
 <p class="outpost-lifecycle">Launch → Doctor → Drive → Evidence → Cleanup</p>
 
 <!--
-TIME: 06:55–07:30 (35s)
+TIME: 07:35–08:10 (35s)
 
 - Lately I spend spare tokens making games — I love tower defense.
 - Built with Vue — “the best JavaScript framework in the world.” [Smile]
@@ -650,7 +711,7 @@ Check before combat: kills change salvage. Inspect the tower visually.
 ```
 
 <!--
-TIME: 07:30–08:20 (50s)
+TIME: 08:10–09:00 (50s)
 
 - Feature map gives the agent context — what to do and what success looks like.
 - Show the Markdown file: purpose, how to reach the feature, steps, expected results, gotchas.
@@ -682,7 +743,7 @@ clicks: 3
 <p class="outpost-proof-footer">Screenshots + accessibility snapshots + action log · retained after cleanup</p>
 
 <!--
-TIME: 08:20–09:10 (50s)
+TIME: 09:00–09:50 (50s)
 
 - Real generation-run evidence: build tower, salvage 210 → 125.
 - [click] Upgrade: changed tower sprite, 125 → 45.
@@ -708,7 +769,7 @@ class: outpost-example
 <p class="outpost-limit">Manual checks stopped during concurrent Chrome use.<br>Full combat progression and audio remained unverified.</p>
 
 <!--
-TIME: 09:10–09:50 (40s)
+TIME: 09:50–10:30 (40s)
 
 - Next session: just “Verify and do a smoke test if this game works.”
 - Agent reads the saved skill + recipes; no repeated UI walkthrough from me.
@@ -735,7 +796,7 @@ class: outpost-example
 <p class="source">Automated when invoked · maintenance workflow, not a recorded run</p>
 
 <!--
-TIME: 09:50–10:20 (30s)
+TIME: 10:30–11:00 (30s)
 
 - As the app changes, the feature map gets stale.
 - Invoke maintain-verification-skill: inspect source → exercise app → prove map corrections.
@@ -772,7 +833,7 @@ class: useful-skills
 </div>
 
 <!--
-TIME: 10:20–11:00 (40s)
+TIME: 11:00–11:40 (40s)
 
 - Pstack also has useful skills you can invoke individually.
 - Unslop edits writing: removes stock AI phrases while preserving meaning and tone.
@@ -805,7 +866,7 @@ class: resource-summary
 </div>
 
 <!--
-TIME: 11:00–12:00 (60s)
+TIME: 11:40–12:40 (60s)
 
 - Invest in verification, reusable engineering skills, and codebase design.
 - Check out pstack: read the workflow, try a small task, adapt it to your project.

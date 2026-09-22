@@ -1,6 +1,6 @@
 # Learning from Pstack: Build Your Own Reliable Coding Agent Stack
 
-English speaker notes based on the September 22 rehearsal. 23 main slides, 12 minutes planned, plus an untimed event cover and dancing closing slide and no backup slides. Short bullet cues, not a script. The 12:00 timing includes the added skills slide; the supplied rehearsal recording lasts 15:50. The skills slide and resource summary were added after the recording.
+English speaker notes based on the September 22 rehearsal. 25 main slides, 12 minutes 40 seconds planned, plus an untimed event cover and dancing closing slide and no backup slides. Short bullet cues, not a script. The 12:40 timing includes the added skills, composition and repository slides; the supplied rehearsal recording lasts 15:50. The skills slide and resource summary were added after the recording.
 
 Generated from the native Slidev notes in slides.md. Edit slides.md, then run pnpm notes. Press P in Slidev to open presenter mode.
 
@@ -91,9 +91,19 @@ TIME: 02:45–03:00 (15s)
 
 SOURCE: https://github.com/cursor/plugins/tree/main/pstack and https://react.dev/community/team, accessed 2026-09-22. Research: research/raw/2026-09-22-pstack-creator.md. Profile screenshot supplied by the user on 2026-09-22, preserved in public/creator/lauren-poteto-profile.png. Current employer is omitted because the supplied profile and React team page differ.
 
-## 9. How pstack organizes agent work
+## 9. Pstack on GitHub
 
-TIME: 03:00–03:25 (25s)
+TIME: 03:00–03:15 (15s)
+
+- This is pstack in Cursor’s public plugins repository.
+- The workflow is available as files we can read: agents, skills and documentation.
+- Let’s look at how those pieces fit together.
+
+SOURCE: User-supplied GitHub screenshot, preserved unchanged in public/creator/pstack-github-repository.png. Source record: research/raw/2026-09-22-pstack-repository-screenshot.md. Repository counts and relative dates are part of the supplied capture, not live claims.
+
+## 10. How pstack organizes agent work
+
+TIME: 03:15–03:40 (25s)
 
 - Pstack: Lauren’s workflow, published as poteto — files we can read and adapt.
 - [click] Skills = how to do a particular job.
@@ -105,9 +115,23 @@ SOURCE: research/raw/2026-09-22-pstack-concepts-source.md, especially Poteto Mod
 
 SOURCE: See research/workflow-narrative.md. The four-stage loop and fork recommendation are the presenter’s framing.
 
-## 10. Invoke poteto-mode
+## 11. Playbooks compose skills into a workflow
 
-TIME: 03:25–03:40 (15s)
+TIME: 03:40–04:05 (25s)
+
+- [click] Each skill is useful on its own: how explains the existing code; architect explores designs.
+- [click] A playbook composes these reusable skills into a workflow for a task. Feature starts with how, then architect.
+- [click] The worker implements; the lead reviews the diff. Verification checks the actual behavior.
+- The Feature playbook assigns review to the lead. The detailed review criteria, including security, live in interrogate, which runs under specific conditions. When building your own workflow, define both who reviews and what they check.
+- Optional elaboration: for your own playbook, worker implements → lead reviews using a named rubric (correctness, security, maintainability, tests) → fix findings and review again → verify actual behavior. This is our recommendation; the default upstream Feature review does not explicitly load that rubric. Multiple model reviewers can remain conditional.
+- This is a simplified example. The full playbook includes a throughput checkpoint, delegation, ordered commits, conditional interrogation and Opening a PR. Architect can be skipped with an explicit reason.
+- These are instructions interpreted by the agent, not deterministic function calls.
+
+SOURCE: research/raw/2026-09-22-pstack-feature-trace.md, skills/poteto-mode/playbooks/feature.md; research/wiki/agent-workflow.md; research/raw/2026-09-22-pstack-feature-review.md; research/raw/2026-09-22-pstack-review-criteria.md. Artwork is a teaching metaphor; prompts in research/skill-composition-prompts.md.
+
+## 12. Invoke poteto-mode
+
+TIME: 04:05–04:20 (15s)
 
 - Select poteto-mode explicitly, then describe the request.
 - One entry point routes the work — no need to memorize every playbook.
@@ -116,9 +140,9 @@ TIME: 03:25–03:40 (15s)
 
 SOURCE: User-supplied invocation screenshot. The screenshot shows skill selection, not an executed theme request. research/raw/2026-09-22-pstack-feature-trace.md supports the illustrative routing walkthrough.
 
-## 11. One example through Poteto mode
+## 13. One example through Poteto mode
 
-TIME: 03:40–04:00 (20s)
+TIME: 04:20–04:40 (20s)
 
 - Read request → choose Feature → plan and implement → verify.
 - The playbook brings in supporting skills and principles as needed.
@@ -127,9 +151,9 @@ TIME: 03:40–04:00 (20s)
 
 SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. Generated diagram is the presenter’s simplified overview of this feature example. The source walkthrough notes retain the additional playbook steps. Image prompt in research/poteto-overview-prompt.md.
 
-## 12. Invoke poteto-mode
+## 14. Invoke poteto-mode
 
-TIME: 04:00–04:15 (15s)
+TIME: 04:40–04:55 (15s)
 
 - Start here: poteto-mode selected + “Add a theme preference that survives reload.”
 - [click] Read the routing instruction: match task, open playbook, copy steps.
@@ -138,9 +162,9 @@ TIME: 04:00–04:15 (15s)
 
 SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 
-## 13. Choose the Feature playbook
+## 15. Choose the Feature playbook
 
-TIME: 04:15–04:35 (20s)
+TIME: 04:55–05:15 (20s)
 
 - Start with how — understand the existing settings implementation.
 - Architect — explore competing designs before committing to one.
@@ -150,9 +174,9 @@ TIME: 04:15–04:35 (20s)
 
 SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 
-## 14. Read Model the Domain
+## 16. Read Model the Domain
 
-TIME: 04:35–05:05 (30s)
+TIME: 05:15–05:45 (30s)
 
 - My own habit: think about the domain and types before writing the logic.
 - One theme preference: light | dark | system.
@@ -161,9 +185,9 @@ TIME: 04:35–05:05 (30s)
 
 SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 
-## 15. Implement and review
+## 17. Implement and review
 
-TIME: 05:05–05:30 (25s)
+TIME: 05:45–06:10 (25s)
 
 - Worker implements saving and restoring the preference.
 - [click] Lead reviews the diff — requirement, design, mistakes.
@@ -172,9 +196,9 @@ TIME: 05:05–05:30 (25s)
 
 SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 
-## 16. Read Prove It Works
+## 18. Read Prove It Works
 
-TIME: 05:30–06:00 (30s)
+TIME: 06:10–06:40 (30s)
 
 - Define success: dark mode still selected after reload.
 - [click] Change theme → reload → inspect saved value, control, and appearance.
@@ -183,9 +207,9 @@ TIME: 05:30–06:00 (30s)
 
 SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 
-## 17. A verification skill for your codebase
+## 19. A verification skill for your codebase
 
-TIME: 06:00–06:55 (55s)
+TIME: 06:40–07:35 (55s)
 
 - [Ask for hands] “Who has an agent that can start your app and check a complete user journey by itself?”
 - [Wait 3–5 seconds; acknowledge the response. Allow 10–15 seconds total.] “That’s the capability I want you to take away today.”
@@ -195,9 +219,9 @@ TIME: 06:00–06:55 (55s)
 
 SOURCE: research/creator-video-analysis.md; Lauren’s video https://x.com/poteto/status/2102050467505430555 (07:05–18:57). Examples are illustrative, not recorded results.
 
-## 18. Generate a skill for Outpost Zero
+## 20. Generate a skill for Outpost Zero
 
-TIME: 06:55–07:30 (35s)
+TIME: 07:35–08:10 (35s)
 
 - Lately I spend spare tokens making games — I love tower defense.
 - Built with Vue — “the best JavaScript framework in the world.” [Smile]
@@ -207,9 +231,9 @@ TIME: 06:55–07:30 (35s)
 
 SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; generation session 01a0c8a0-4b74-7460-a338-7ff884a568cb. Screenshot: generation proof before.png.
 
-## 19. One feature file: defenses.md
+## 21. One feature file: defenses.md
 
-TIME: 07:30–08:20 (50s)
+TIME: 08:10–09:00 (50s)
 
 - Feature map gives the agent context — what to do and what success looks like.
 - Show the Markdown file: purpose, how to reach the feature, steps, expected results, gotchas.
@@ -220,9 +244,9 @@ TIME: 07:30–08:20 (50s)
 
 SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; generated features/README.md and features/defenses.md.
 
-## 20. The agent plays and keeps the evidence
+## 22. The agent plays and keeps the evidence
 
-TIME: 08:20–09:10 (50s)
+TIME: 09:00–09:50 (50s)
 
 - Real generation-run evidence: build tower, salvage 210 → 125.
 - [click] Upgrade: changed tower sprite, 125 → 45.
@@ -233,9 +257,9 @@ TIME: 08:20–09:10 (50s)
 
 SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; generation actions.md and built.png, upgraded.png, sale-confirmation.png, sold.png. Cancellation has a text snapshot, not a separate screenshot.
 
-## 21. Reuse it with a simple request
+## 23. Reuse it with a simple request
 
-TIME: 09:10–09:50 (40s)
+TIME: 09:50–10:30 (40s)
 
 - Next session: just “Verify and do a smoke test if this game works.”
 - Agent reads the saved skill + recipes; no repeated UI walkthrough from me.
@@ -245,9 +269,9 @@ TIME: 09:10–09:50 (40s)
 
 SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; smoke session 01a0c8b1-99da-7231-bcc5-6ab19785ea34. Prompt spelling normalized. These are existing tests, not tests generated by the skill. Manual cancellation and completed sale belong to the earlier generation run; the later smoke run did not manually complete those actions.
 
-## 22. Pstack maintains the feature map too
+## 24. Pstack maintains the feature map too
 
-TIME: 09:50–10:20 (30s)
+TIME: 10:30–11:00 (30s)
 
 - As the app changes, the feature map gets stale.
 - Invoke maintain-verification-skill: inspect source → exercise app → prove map corrections.
@@ -257,9 +281,9 @@ TIME: 09:50–10:20 (30s)
 
 SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; installed pstack 0.15.2 maintain-verification-skill. No maintenance run was found in the two game sessions. Outcomes: clean, changed, or blocked; edits restricted to the verification skill directory.
 
-## 23. More pstack skills worth trying
+## 25. More pstack skills worth trying
 
-TIME: 10:20–11:00 (40s)
+TIME: 11:00–11:40 (40s)
 
 - Pstack also has useful skills you can invoke individually.
 - Unslop edits writing: removes stock AI phrases while preserving meaning and tone.
@@ -270,9 +294,9 @@ TIME: 10:20–11:00 (40s)
 
 SOURCE: research/raw/2026-09-22-pstack-useful-skills.md; research/wiki/audience-resources.md. Upstream SKILL.md files fetched at a pinned commit on 2026-09-22. Selection is the presenter’s recommendation, not a comparative benchmark.
 
-## 24. Build your own reliable agent stack
+## 26. Build your own reliable agent stack
 
-TIME: 11:00–12:00 (60s)
+TIME: 11:40–12:40 (60s)
 
 - Invest in verification, reusable engineering skills, and codebase design.
 - Check out pstack: read the workflow, try a small task, adapt it to your project.
@@ -282,7 +306,7 @@ TIME: 11:00–12:00 (60s)
 
 SOURCE: research/raw/2026-09-22-pstack-installation.md; research/wiki/audience-resources.md. Summary is the presenter’s synthesis. Resource gist: https://gist.github.com/alexanderop/743bbd811f2a56063fb79d3b3847ec27
 
-## 25. Thank you!
+## 27. Thank you!
 
 TIME: END
 

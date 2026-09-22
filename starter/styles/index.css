@@ -1,4 +1,24 @@
 /* Deck-specific sizing; colors, typography and footer come from the shared theme. */
+.slidev-layout.skill-composition-slide h1 { font-size: 35px; }
+.slidev-layout .skill-composition { position: relative; height: 350px; margin-top: 20px; }
+.slidev-layout .composition-skills { position: absolute; left: 0; top: 0; width: 340px; }
+.slidev-layout .skill-composition h2 { font-size: 23px; margin: 0 0 12px; color: var(--brand-accent); }
+.slidev-layout .composition-skill { display: flex; align-items: center; height: 90px; gap: 14px; }
+.slidev-layout .composition-skill img { width: 84px; height: 84px; object-fit: contain; }
+.slidev-layout .composition-skill strong { font-size: 25px; font-family: monospace; }
+.slidev-layout .composition-skill p { font-size: 18px; margin: 3px 0 0; }
+.slidev-layout .composition-connections { position: absolute; inset: 0; width: 100%; height: 350px; color: var(--brand-accent); pointer-events: none; }
+.slidev-layout .composition-mascot { position: absolute; width: 230px; height: 154px; object-fit: contain; left: 120px; bottom: -10px; }
+.slidev-layout .composition-playbook { position: absolute; left: 455px; right: 0; top: 0; padding: 18px 24px 13px; border: 2px solid currentColor; border-radius: 8px 19px 15px 5px; box-shadow: -7px 5px 0 -3px var(--brand-border); }
+.slidev-layout .composition-playbook ol { margin: 0; padding-left: 27px; }
+.slidev-layout .composition-playbook li { padding-left: 3px; margin: 0; height: 61px; font-size: 21px; }
+.slidev-layout .composition-playbook li:not(:last-child)::after { content: '↓'; display: block; font-size: 21px; line-height: 28px; opacity: .65; }
+.slidev-layout .composition-playbook .composition-review { line-height: 22px; }
+.slidev-layout .composition-playbook .composition-review::after { line-height: 17px; }
+.slidev-layout .composition-playbook code { color: var(--brand-accent); background: none; padding: 0; margin-left: 12px; font-size: 17px; }
+.slidev-layout .composition-caption { font-size: 14px; opacity: .65; margin: -4px 0 0; }
+.slidev-layout .composition-takeaway { text-align: center; font-size: 23px; margin: 16px 0 0; }
+.slidev-layout .composition-takeaway strong { color: var(--brand-accent); }
 .title-reel-grid { display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 60px; align-items: center; height: 100%; }
 .title-reel-copy { display: flex; flex-direction: column; justify-content: center; height: 100%; }
 .slidev-layout .title-reel-copy h1 { font-size: 62px; line-height: 1.08; margin: 0 0 30px; letter-spacing: -.035em; }
