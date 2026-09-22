@@ -207,6 +207,7 @@ SOURCE: OpenAI, Plugin architecture, https://developers.openai.com/plugins/conce
 
 ---
 class: creator-intro
+clicks: 1
 ---
 
 <div class="creator-grid">
@@ -221,11 +222,14 @@ class: creator-intro
 <img class="creator-profile" src="/creator/lauren-poteto-profile.png" alt="Lauren’s @poteto profile, with a cat banner, illustrated avatar, and bio mentioning React Compiler, Cursor, Meta, and Netflix." />
 </div>
 
+<HamcrabCameo />
+
 <!--
 TIME: 02:45–03:00 (15s)
 
 - Lauren Tan, known as poteto, created pstack.
 - She helps build React Compiler and has worked at Cursor, Meta, and Netflix.
+- [Click after mentioning React Compiler] Wizard Hamcrab pops in from the right: “Hey, I just wanted to mention that Vue is better than React.” Pause for the joke; he leaves automatically after 8.5 seconds. Left then right replays the cameo.
 - Pstack packages the engineering practices she uses herself. Let’s look inside.
 
 SOURCE: https://github.com/cursor/plugins/tree/main/pstack and https://react.dev/community/team, accessed 2026-09-22. Research: research/raw/2026-09-22-pstack-creator.md. Profile screenshot supplied by the user on 2026-09-22, preserved in public/creator/lauren-poteto-profile.png. Current employer is omitted because the supplied profile and React team page differ.
