@@ -42,6 +42,40 @@ The default lead review has no explicit instruction in Feature or the Poteto Mod
 
 The composition slide now names the responsibility split as “Worker implements · Lead reviews”. Its speaker notes recommend an explicit baseline review rubric for the audience’s own playbooks, covering correctness, security, maintainability and tests, followed by fixes, another review and behavioral verification. This is a proposed adaptation, not a claim that upstream Feature always loads interrogate’s rubric. [Review criteria source](../raw/2026-09-22-pstack-review-criteria.md)
 
+## Goal-based routing and understanding
+
+The guide teaches a goal plus a checkable finish condition as the normal entry point. `/poteto-mode` matches a playbook, copies its steps into the todo list, and leaves skipped steps visible with reasons. The mode persists across the conversation; “new task” requests a fresh match, while “don't change code yet” constrains the task to investigation. The snapshot describes 23 playbooks; treat that count as versioned documentation, not a permanent product property. [Guide: routing](../raw/pstack-guide.md#02-poteto-modemd)
+
+The understanding tools answer different questions: `/how` traces present behavior and types; `/why` searches historical evidence and distinguishes inference from direct evidence; `/teach` combines those into an explanation; `/recall` restores context across recent work. Session pickup instead resumes a specific branch or prior task, reconstructing decisions and checking inherited claims against the original goal. [Guide: understanding](../raw/pstack-guide.md#03-understandmd)
+
+## Build, cleanup, and reusable habits
+
+Bug prompts name the symptom and request reproduction. Feature prompts name new behavior and invariants. Refactoring prompts record behavior before moving structure. Performance prompts supply a measured baseline; hillclimbing additionally freezes the measurement harness, works one hypothesis at a time, and retains only wins. `/tdd` uses a small failing test when feasible and can choose the closest executable check when a test would require brittle mocks or broad setup. [Guide: build](../raw/pstack-guide.md#05-build-and-cleanmd)
+
+The cleanup responsibilities differ: `/deslop` handles code and comes from `cursor-team-kit`, `/unslop` handles prose, and `/no-comments` delegates comment review to fresh eyes and addresses accepted refactor flags. The guide's TypeScript rules describe automatic applicability to `.ts` and `.tsx` edits; this is upstream intended behavior, not evidence that those rules are installed in every harness. [Guide: cleanup](../raw/pstack-guide.md#05-build-and-cleanmd)
+
+### Principles as steering vocabulary
+
+A principle name should change a concrete decision. Merely citing the name is insufficient. The guide groups its 23 principles as follows. [Guide: principles](../raw/pstack-guide.md#08-principlesmd)
+
+| Area | Principles and decisions they guide |
+| --- | --- |
+| Scope and design | Laziness Protocol: smallest solution; Foundational Thinking: data before logic; Redesign from First Principles: integrate requirements coherently; Attack the Premise: revisit assumptions shared by repeated failed fixes; Subtract Before You Add: remove dead weight; Minimize Reader Load: reduce mental overhead; Outcome-Oriented Execution: converge on the target; Experience First: prioritize the user result; Exhaust the Design Space: compare prototypes; Build the Lever: make the work reproducible with tools |
+| Architecture | Model the Domain: centralize repeated rules; Boundary Discipline: validate external data; Type System Discipline: exclude illegal states; Make Operations Idempotent: safe retries; Migrate Callers Then Delete Legacy APIs: finish migrations; Separate Before Serializing Shared State: remove sharing before coordination |
+| Verification | Prove It Works: check the actual artifact; Fix Root Causes: trace a reproduction; Sequence Work into Verifiable Units: check each unit; Test Behavior, Not Implementation: assert observable expected values |
+| Delegation | Guard the Context Window: delegate bulk reading; Never Block on the Human: proceed with reversible work and present results |
+| Learning | Encode Lessons in Structure: turn repeated advice into checks, lint rules, or scripts |
+
+### Customize and evaluate the workflow
+
+`/automate-me` mines repeated preferences from workspace transcripts, confirms patterns with the user, and drafts a personal mode; later updates use history since the previous edit. `/reflect` uses three reviewers and a synthesizer to separate Accepted, Rejected and Backlog proposals, then waits for approval before changing skills. Skill authoring routes through validation and review, with dedicated generators for verification skills. `/technical-writing` chooses tutorial, how-to, reference or explanation before refining sentences. [Guide: customization](../raw/pstack-guide.md#09-make-it-yoursmd)
+
+The Eval playbook hides evaluation context from candidate agents, uses sanitized directories, gives the same organic-looking task to each variant, and judges outputs under neutral labels. It checks chain-following from files actually read. The guide still asks the human to read outputs and question the rubric when the verdict conflicts with their judgment. Skill changes should remain separate from feature changes so their effects can be reviewed. [Guide: evaluation](../raw/pstack-guide.md#09-make-it-yoursmd)
+
+## Guide-informed presentation changes
+
+The September 23 revision makes the theme prompt explicitly state a goal, a constraint (system remains the default), and proof (saved choice and rendered appearance after reload). The Prove It Works notes demonstrate direct steering by principle name and include a fresh-profile default check. These remain illustrative instructions, not a newly executed theme test. [Guide chapters 02, 06 and 08](../raw/pstack-guide.md)
+
 ## Claims and evidence
 
 - Skills describe jobs; playbooks organize tasks; principles guide decisions. [Source deck](../raw/pstack-source-slides.md)
@@ -64,6 +98,8 @@ The original article URLs and full Part 1 capture are absent from the supplied r
 
 The video broadens the argument beyond writing skills: reliable infrastructure includes architecture and enforceable checks. The proposed talk should teach this alongside the existing task loop. This is our synthesis. A detailed timestamp map and slide proposal are in [creator-video-analysis.md](../creator-video-analysis.md). Do not generalize the speaker’s PR counts, comment policy, or specific framework into universal recommendations. Source caption authorship is unknown.
 
+The guide is an instructional overview, not an observed run. In particular, its “most changes need none” design ladder is less prescriptive than the previously captured Feature playbook's explicit architect/delegation steps. Preserve both: use the guide for orientation and the relevant versioned playbook for exact execution requirements. Its 23-principle list also does not prove every principle is applied on every task. [Guide](../raw/pstack-guide.md), [Feature source](../raw/2026-09-22-pstack-feature-trace.md)
+
 ## Sources
 
 - [Supplied deck](../raw/pstack-source-slides.md)
@@ -73,3 +109,4 @@ The video broadens the argument beyond writing skills: reliable infrastructure i
 - [Three-foundations direction](../raw/2026-09-21-three-foundations-direction.md)
 
 - [OpenAI plugin architecture](../raw/openai-plugin-architecture.md)
+- [Complete pstack guide, captured September 23](../raw/pstack-guide.md)

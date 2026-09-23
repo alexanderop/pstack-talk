@@ -160,3 +160,21 @@ Changed the composition slide to Worker implements · Lead reviews. Added notes 
 ## [2026-09-22] ingest | Repository screenshot after creator
 
 Preserved the user-supplied GitHub screenshot unchanged and added it immediately after Lauren’s introduction. Adds a visual view of the repository layout; challenges no prior claim. No new factual question. Updated creator synthesis and source record. Added 15 seconds, bringing the deck to 25 timed slides, 12:40 total, plus cover and finale.
+
+## [2026-09-23] ingest | Complete pstack guide
+
+Preserved the guide index and ten complete chapters from one pinned upstream commit in `raw/pstack-guide.md`, following the user's pasted source. Retained the six supplied image URLs and source captions; image pixels were not ingested. Publication date and individual authorship remain unknown.
+
+Expanded agent-workflow with routing, understanding tools, build/cleanup responsibilities, all 23 principle names, customization and blind skill evaluation. Expanded planning-and-grilling with architect/arena/swarm/interrogate distinctions; project-verification with finish conditions, verification lifecycle and PR shipping boundaries; audience-resources with the full reading path and Cursor setup caveats. Added autonomous-work for contracts, logs, queues and program orchestration.
+
+The guide reinforces goal-plus-proof and challenges treating all parallel work as arena or all green PRs as authorized to merge. Its lightweight design ladder is less prescriptive than the captured Feature playbook; retain the distinction between an overview and exact versioned instructions. Cursor paths, `/loop`, counts and pre-0.15.3 model migration advice must not be generalized to Codex.
+
+Potential slide impact: workflow routing, skill composition, verification lifecycle, and the final resource handoff. Slides, presenter notes and the published gist were not changed. Open question: which guide features and unattended-run mechanisms are supported by the installed harness/version if demonstrated later?
+
+## [2026-09-23] maintenance | Three practical guide takeaways
+
+Expanded the existing theme request to goal + constraints + proof, added a spoken principle-steering example to Prove It Works, and changed the closing assignment to one feature, expected result, tools and retained evidence. Updated native notes and generated presenter notes. Kept 25 timed slides and the 12:40 allocation. The theme walkthrough remains illustrative; no new runtime proof or published resource update is implied.
+
+## [2026-09-23] maintenance | Model configuration overview
+
+Added a 15-second setup slide after Invoke poteto-mode: available models and reasoning budget, code delegates, judgment, review panels, and selective overrides. Labels Cursor syntax and avoids version-sensitive model names or config paths. Updated timing checks and brief to 26 timed slides / 12:55, 28 slides overall. No local model settings changed.

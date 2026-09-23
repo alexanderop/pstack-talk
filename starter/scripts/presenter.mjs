@@ -40,10 +40,10 @@ for (const [index, slide] of slides.entries()) {
   sections.push(`## ${index + 1}. ${title}\n\n${note}\n`)
 }
 
-if (elapsed !== 760) errors.push(`Main talk totals ${elapsed}s instead of 760s`)
-if (mainCount !== 25 || slides.length !== 27 || !slides[0]?.note?.trim().startsWith('TIME: COVER') || !slides.at(-1)?.note?.trim().startsWith('TIME: END')) errors.push(`Expected 25 timed slides, one untimed cover and one untimed closing slide, found ${mainCount}/${slides.length}`)
+if (elapsed !== 775) errors.push(`Main talk totals ${elapsed}s instead of 775s`)
+if (mainCount !== 26 || slides.length !== 28 || !slides[0]?.note?.trim().startsWith('TIME: COVER') || !slides.at(-1)?.note?.trim().startsWith('TIME: END')) errors.push(`Expected 26 timed slides, one untimed cover and one untimed closing slide, found ${mainCount}/${slides.length}`)
 
-const output = `# ${slides[0].frontmatter.title}\n\nEnglish speaker notes based on the September 22 rehearsal. ${mainCount} main slides, 12 minutes 40 seconds planned, plus an untimed event cover and dancing closing slide and no backup slides. Short bullet cues, not a script. The 12:40 timing includes the added skills, composition and repository slides; the supplied rehearsal recording lasts 15:50. The skills slide and resource summary were added after the recording.\n\nGenerated from the native Slidev notes in slides.md. Edit slides.md, then run pnpm notes. Press P in Slidev to open presenter mode.\n\n${sections.join('\n')}`
+const output = `# ${slides[0].frontmatter.title}\n\nEnglish speaker notes based on the September 22 rehearsal. ${mainCount} main slides, 12 minutes 55 seconds planned, plus an untimed event cover and dancing closing slide and no backup slides. Short bullet cues, not a script. The 12:55 timing includes the added skills, composition, repository and model-configuration slides; the supplied rehearsal recording lasts 15:50. The skills slide and resource summary were added after the recording.\n\nGenerated from the native Slidev notes in slides.md. Edit slides.md, then run pnpm notes. Press P in Slidev to open presenter mode.\n\n${sections.join('\n')}`
 
 if (process.argv.includes('--check')) {
   const current = await readFile(resolve(root, 'presenter.md'), 'utf8').catch(() => '')

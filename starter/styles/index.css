@@ -214,3 +214,20 @@
 .slidev-layout .useful-skill-card p { font-size: 18px; line-height: 1.3; margin: 10px 0 0; opacity: .8; }
 
 .slidev-layout.outpost-feature-file pre { font-size: 16px; line-height: 1.5; }
+
+.slidev-layout.model-setup h1 { font-size: 42px; }
+.slidev-layout .model-command { margin: 32px 0 14px; font-size: 34px; color: var(--brand-accent); }
+.slidev-layout .model-intro { font-size: 24px; margin: 0 0 35px; }
+.model-roles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.model-roles section { border-top: 2px solid var(--brand-accent); padding-top: 16px; }
+.slidev-layout .model-roles h2 { font-size: 25px; margin: 0 0 12px; }
+.slidev-layout .model-roles p { font-size: 20px; margin: 0; }
+.slidev-layout .model-takeaway { font-size: 23px; margin-top: 40px; }
+.slidev-layout .model-caption { font-size: 14px; opacity: .65; margin-top: 20px; }
+
+.request-trace .trace-request { font-size: 17px; line-height: 1.25; margin-bottom: 8px; }
+.request-trace .editor-code h1 { margin-bottom: 8px; }
+.request-trace .trace-path { margin-bottom: 4px; }
+.request-trace .editor-code pre code { font-size: 14px; line-height: 1.2; }
+.request-trace .trace-action { margin-top: 6px; padding-top: 4px; }
+.slidev-layout .model-command code { color: var(--brand-accent); }

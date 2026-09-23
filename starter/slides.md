@@ -207,7 +207,6 @@ SOURCE: OpenAI, Plugin architecture, https://developers.openai.com/plugins/conce
 
 ---
 class: creator-intro
-clicks: 1
 ---
 
 <div class="creator-grid">
@@ -222,14 +221,11 @@ clicks: 1
 <img class="creator-profile" src="/creator/lauren-poteto-profile.png" alt="Lauren’s @poteto profile, with a cat banner, illustrated avatar, and bio mentioning React Compiler, Cursor, Meta, and Netflix." />
 </div>
 
-<HamcrabCameo />
-
 <!--
 TIME: 02:45–03:00 (15s)
 
 - Lauren Tan, known as poteto, created pstack.
 - She helps build React Compiler and has worked at Cursor, Meta, and Netflix.
-- [Click after mentioning React Compiler] Wizard Hamcrab pops in from the right: “Hey, I just wanted to mention that Vue is better than React.” Pause for the joke; he leaves automatically after 8.5 seconds. Left then right replays the cameo.
 - Pstack packages the engineering practices she uses herself. Let’s look inside.
 
 SOURCE: https://github.com/cursor/plugins/tree/main/pstack and https://react.dev/community/team, accessed 2026-09-22. Research: research/raw/2026-09-22-pstack-creator.md. Profile screenshot supplied by the user on 2026-09-22, preserved in public/creator/lauren-poteto-profile.png. Current employer is omitted because the supplied profile and React team page differ.
@@ -354,6 +350,33 @@ SOURCE: User-supplied invocation screenshot. The screenshot shows skill selectio
 
 ---
 layout: default
+class: model-setup
+---
+
+# Choose models for the work
+
+<p class="model-command"><code>/setup-pstack</code></p>
+<p class="model-intro">Pick the models and reasoning budget available to you.</p>
+<div class="model-roles">
+<section><h2>Implementation</h2><p>Code delegates</p></section>
+<section><h2>Judgment</h2><p>Compare proposals</p></section>
+<section><h2>Review panels</h2><p>Independent perspectives</p></section>
+</div>
+<p class="model-takeaway">Override the roles you care about. Keep defaults for the rest.</p>
+<p class="model-caption">Cursor command shown · invocation and configuration depend on your harness.</p>
+
+<!--
+TIME: 04:20–04:35 (15s)
+
+- Setup lets you choose models for code delegates, judgment and review panels.
+- Choose within your available models and reasoning budget; override only the roles you care about.
+- This is Cursor’s command syntax. Now back to our feature walkthrough.
+
+SOURCE: research/raw/pstack-guide.md, chapter 01. Role-level configuration is documented behavior, not a benchmark recommending specific models. This slide does not configure the presenter’s environment.
+-->
+
+---
+layout: default
 class: poteto-overview
 ---
 
@@ -363,7 +386,7 @@ class: poteto-overview
 <p class="poteto-overview-caption">The overview first. Then the instructions behind it.</p>
 
 <!--
-TIME: 04:20–04:40 (20s)
+TIME: 04:35–04:55 (20s)
 
 - Read request → choose Feature → plan and implement → verify.
 - The playbook brings in supporting skills and principles as needed.
@@ -375,7 +398,7 @@ SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. Generated diagram is th
 
 ---
 layout: code-editor
-class: pstack-trace
+class: pstack-trace request-trace
 title: Invoke poteto-mode
 project: One example through Poteto mode
 activeFile: skills/poteto-mode/SKILL.md
@@ -394,7 +417,7 @@ files: |
 ---
 
 <h1>Read the request</h1>
-<p class="trace-request">$poteto-mode Add a theme preference that survives reload.</p>
+<p class="trace-request">$poteto-mode Add a theme preference that survives reload.<br>Keep “system” as the default. Verify the saved choice<br>and rendered appearance after reload.</p>
 <p class="trace-path">Source · skills/poteto-mode/SKILL.md · excerpts</p>
 
 ```md {1|3-4|6-8}
@@ -414,12 +437,13 @@ and copy its steps in verbatim.
 <PstackWorkflowMap :stage="1" :click="$clicks" />
 
 <!--
-TIME: 04:40–04:55 (15s)
+TIME: 04:55–05:10 (15s)
 
-- Start here: poteto-mode selected + “Add a theme preference that survives reload.”
-- [click] Read the routing instruction: match task, open playbook, copy steps.
-- [click] New behavior → Feature; other tasks use other playbooks.
-- Markdown becomes the agent’s checklist. This is an illustrative walkthrough.
+- Goal + constraints + proof: save the theme; keep the system default; check after reload.
+- [click] You describe the outcome and how to check it. The playbook supplies the steps.
+- [click] New behavior → Feature. This is an illustrative walkthrough.
+
+SOURCE: research/raw/pstack-guide.md, chapters 02 and 06. Prompt adapted to the existing theme example.
 
 SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 -->
@@ -464,7 +488,7 @@ named data shape and its organizing structure per
 <PstackWorkflowMap :stage="2" :click="$clicks" />
 
 <!--
-TIME: 04:55–05:15 (20s)
+TIME: 05:10–05:30 (20s)
 
 - Start with how — understand the existing settings implementation.
 - Architect — explore competing designs before committing to one.
@@ -516,7 +540,7 @@ current shape is already clear, local, and unlikely to grow.
 <PstackWorkflowMap :stage="3" :click="$clicks" />
 
 <!--
-TIME: 05:15–05:45 (30s)
+TIME: 05:30–06:00 (30s)
 
 - My own habit: think about the domain and types before writing the logic.
 - One theme preference: light | dark | system.
@@ -565,7 +589,7 @@ Review its diff yourself.
 <PstackWorkflowMap :stage="4" :click="$clicks" />
 
 <!--
-TIME: 05:45–06:10 (25s)
+TIME: 06:00–06:25 (25s)
 
 - Worker implements saving and restoring the preference.
 - [click] Lead reviews the diff — requirement, design, mistakes.
@@ -616,12 +640,15 @@ Delegation: trust artifacts, not self-reports.
 <PstackWorkflowMap :stage="5" :click="$clicks" />
 
 <!--
-TIME: 06:10–06:40 (30s)
+TIME: 06:25–06:55 (30s)
 
-- Define success: dark mode still selected after reload.
+- Steer with a principle: “Apply Prove It Works. Show me the theme after reload.”
+- Define success: dark mode still selected after reload; a fresh profile defaults to system.
 - [click] Change theme → reload → inspect saved value, control, and appearance.
 - Keep evidence such as screenshots or an action log; inspect the actual result.
 - [click] If it resets: fix and repeat. A worker saying “done” is insufficient.
+
+SOURCE: research/raw/pstack-guide.md, chapter 08. Principle names provide a concrete steering vocabulary.
 
 SOURCE: research/raw/2026-09-22-pstack-feature-trace.md. cursor/plugins commit 53e579f1481697931fc44f5445171397cfa2b24b. Excerpts retain source wording; long lines are wrapped and omissions are marked. This is a teaching trace of instructions, not a recorded agent run.
 -->
@@ -637,7 +664,7 @@ class: artwork
 <p class="source">Lauren (@poteto) · Cursor Compile recording · 07:05–12:34</p>
 
 <!--
-TIME: 06:40–07:35 (55s)
+TIME: 06:55–07:50 (55s)
 
 - [Ask for hands] “Who has an agent that can start your app and check a complete user journey by itself?”
 - [Wait 3–5 seconds; acknowledge the response. Allow 10–15 seconds total.] “That’s the capability I want you to take away today.”
@@ -673,7 +700,7 @@ features/
 <p class="outpost-lifecycle">Launch → Doctor → Drive → Evidence → Cleanup</p>
 
 <!--
-TIME: 07:35–08:10 (35s)
+TIME: 07:50–08:25 (35s)
 
 - Lately I spend spare tokens making games — I love tower defense.
 - Built with Vue — “the best JavaScript framework in the world.” [Smile]
@@ -711,7 +738,7 @@ Check before combat: kills change salvage. Inspect the tower visually.
 ```
 
 <!--
-TIME: 08:10–09:00 (50s)
+TIME: 08:25–09:15 (50s)
 
 - Feature map gives the agent context — what to do and what success looks like.
 - Show the Markdown file: purpose, how to reach the feature, steps, expected results, gotchas.
@@ -743,7 +770,7 @@ clicks: 3
 <p class="outpost-proof-footer">Screenshots + accessibility snapshots + action log · retained after cleanup</p>
 
 <!--
-TIME: 09:00–09:50 (50s)
+TIME: 09:15–10:05 (50s)
 
 - Real generation-run evidence: build tower, salvage 210 → 125.
 - [click] Upgrade: changed tower sprite, 125 → 45.
@@ -769,7 +796,7 @@ class: outpost-example
 <p class="outpost-limit">Manual checks stopped during concurrent Chrome use.<br>Full combat progression and audio remained unverified.</p>
 
 <!--
-TIME: 09:50–10:30 (40s)
+TIME: 10:05–10:45 (40s)
 
 - Next session: just “Verify and do a smoke test if this game works.”
 - Agent reads the saved skill + recipes; no repeated UI walkthrough from me.
@@ -796,7 +823,7 @@ class: outpost-example
 <p class="source">Automated when invoked · maintenance workflow, not a recorded run</p>
 
 <!--
-TIME: 10:30–11:00 (30s)
+TIME: 10:45–11:15 (30s)
 
 - As the app changes, the feature map gets stale.
 - Invoke maintain-verification-skill: inspect source → exercise app → prove map corrections.
@@ -833,7 +860,7 @@ class: useful-skills
 </div>
 
 <!--
-TIME: 11:00–11:40 (40s)
+TIME: 11:15–11:55 (40s)
 
 - Pstack also has useful skills you can invoke individually.
 - Unslop edits writing: removes stock AI phrases while preserving meaning and tone.
@@ -853,8 +880,8 @@ class: resource-summary
 
 <div class="summary-grid">
 <div class="summary-copy">
-<h2>Check out pstack</h2>
-<p>Read the workflow. Try it.<br>Make it yours.</p>
+<h2>Start with one feature</h2>
+<p>Write its expected result.<br>Give the agent tools to exercise it.<br>Keep the evidence.</p>
 <a class="summary-repo" href="https://github.com/cursor/plugins/tree/main/pstack">github.com/cursor/plugins → pstack</a>
 <p class="summary-takeaway">Give your agent a way<br>to prove its work.</p>
 </div>
@@ -866,15 +893,16 @@ class: resource-summary
 </div>
 
 <!--
-TIME: 11:40–12:40 (60s)
+TIME: 11:55–12:55 (60s)
 
 - Invest in verification, reusable engineering skills, and codebase design.
-- Check out pstack: read the workflow, try a small task, adapt it to your project.
-- My first step for you: give your agent a feature map and tools to prove its work.
+- Your first step: pick one feature and write its expected result.
+- Give the agent tools to exercise it and keep the evidence, like the tower sale and refund.
+- Read pstack’s workflow and adapt that small starting point to your project.
 - Scan the QR: installation instructions, this deck, the PDF, and the source resources.
 - [Pause so people can scan.] The same code stays on screen during questions.
 
-SOURCE: research/raw/2026-09-22-pstack-installation.md; research/wiki/audience-resources.md. Summary is the presenter’s synthesis. Resource gist: https://gist.github.com/alexanderop/743bbd811f2a56063fb79d3b3847ec27
+SOURCE: research/raw/2026-09-22-pstack-installation.md; research/raw/pstack-guide.md, chapter 06; research/wiki/audience-resources.md. Summary is the presenter’s synthesis. Resource gist: https://gist.github.com/alexanderop/743bbd811f2a56063fb79d3b3847ec27
 -->
 
 ---

@@ -44,3 +44,5 @@ A 15-second creator introduction precedes the pstack structure overview, using t
 The skill-composition slide follows “How pstack organizes agent work” and precedes “Invoke poteto-mode”. It adds 25 seconds: the current deck now has 24 timed slides, 12:25 total, plus the untimed cover and finale (26 slides). Earlier counts above describe prior revisions.
 
 The user-supplied repository screenshot now follows the creator introduction. Current deck: 25 timed slides, 12:40 total, plus untimed cover and finale (27 slides).
+
+A short model-configuration slide after “Invoke poteto-mode” adds 15 seconds and introduces setup by role without naming model recommendations. Current deck: 26 timed slides, 12:55 total, plus untimed cover and finale (28 slides). The theme prompt and closing assignment now explicitly connect goals to checkable results.

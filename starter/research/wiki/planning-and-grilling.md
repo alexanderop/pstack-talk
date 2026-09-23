@@ -13,6 +13,12 @@ For the existing talk, sharpen slides 9 and 10 within their combined 165 seconds
 - The installed multi-phase plan playbook skips obvious one-or-two-file changes, resolves open empirical questions by prototype, includes observable results and verification, validates structure with a script, and hands back the plan before execution. Script success establishes document structure, not design correctness. [Playbooks](../raw/2026-09-22-pstack-planning-playbooks.md)
 - At collection time, Matt Pocock's grill-me delegates to grilling. Grilling walks a decision tree in rounds, recommends answers, investigates environmental facts itself, and waits for the user's decisions and confirmation of shared understanding. It does not prescribe pstack's prototype and runtime-proof workflow. [Source snapshot](../raw/2026-09-22-grill-me-source.md)
 
+## Choosing design, coverage, and review tools
+
+The guide separates `/architect` (ground the problem, write caller usage, settle types and boundaries), `/arena` (several attempts at the same brief, cross-judge, select a base and combine the best ideas), `/swarm` (partition independent slices or declared race arms, aggregate PASS/ISSUES/BLOCKED), and `/interrogate` (challenge a shared intent and diff, then triage findings). Arena is design synthesis; swarm is coverage or a race with an explicit selection rule. [Guide: design](../raw/pstack-guide.md#04-designmd)
+
+Architect proceeds into implementation by default. “With checkpoint; stop and show me before implementing” explicitly requests a pause. Interrogate returns Act on, Consider, Noted and Dismissed findings with reasons, and does not apply changes automatically. The guide recommends more scrutiny for costly or contested decisions, rather than treating the full panel workflow as necessary for every change. [Guide: design](../raw/pstack-guide.md#04-designmd)
+
 ## Tensions and open questions
 
 Avoid describing this as a pstack-specific harness Plan Mode. The article describes planning practices, architect, prototyping, and a multi-phase planning playbook. Avoid portraying grill-me as ignorant of the codebase or synonymous with adversarial multi-agent plan review. Its source explicitly separates facts the agent finds from decisions the user makes. The interview can precede a pstack experiment.
@@ -26,3 +32,4 @@ The article's criticism of abstract planning is the author's position, not proof
 - [User-supplied Part 2 article](../raw/2026-09-09-pstack-guide-part-2.md)
 - [Installed pstack planning and prototype playbooks](../raw/2026-09-22-pstack-planning-playbooks.md)
 - [Matt Pocock grill-me and grilling source snapshot](../raw/2026-09-22-grill-me-source.md)
+- [Complete pstack guide, captured September 23](../raw/pstack-guide.md)
