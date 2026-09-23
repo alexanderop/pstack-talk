@@ -151,7 +151,6 @@ class: diagram
 <p>Make the right change<br>easy.</p>
 </section>
 </div>
-<p v-after class="foundations-takeaway">Invest in the foundations. Reduce repeated manual review.</p>
 
 <!--
 TIME: 00:50–01:45 (55s)
@@ -355,21 +354,42 @@ class: model-setup
 
 # Choose models for the work
 
+<div class="model-grid">
+<div class="model-copy">
 <p class="model-command"><code>/setup-pstack</code></p>
-<p class="model-intro">Pick the models and reasoning budget available to you.</p>
-<div class="model-roles">
-<section><h2>Implementation</h2><p>Code delegates</p></section>
-<section><h2>Judgment</h2><p>Compare proposals</p></section>
-<section><h2>Review panels</h2><p>Independent perspectives</p></section>
+<p class="model-intro">Choose the models and reasoning budget available to you.</p>
+<ul class="model-roles">
+<li><strong>Implementation</strong><span>Code delegates</span></li>
+<li><strong>Judgment</strong><span>Compare proposals</span></li>
+<li><strong>Review panels</strong><span>Independent perspectives</span></li>
+</ul>
+<p class="model-takeaway">Override only the roles you care about.</p>
 </div>
-<p class="model-takeaway">Override the roles you care about. Keep defaults for the rest.</p>
-<p class="model-caption">Cursor command shown · invocation and configuration depend on your harness.</p>
+<div class="model-example">
+<p class="model-example-label">Illustrative JSON</p>
+<pre class="model-json"><code>{
+  "implementation": {
+    "model": "grok-4.6-fast-xhigh"
+  },
+  "judgment": {
+    "model": "claude-fable-5-1-thinking-max"
+  },
+  "reviewPanels": [
+    "gpt-5.6-sol-max",
+    "claude-opus-5-thinking-xhigh"
+  ]
+}</code></pre>
+<p class="model-example-note">One reviewer runs per panel entry.</p>
+</div>
+</div>
+<p class="model-caption">Cursor command shown · actual configuration is a role list, not JSON.</p>
 
 <!--
 TIME: 04:20–04:35 (15s)
 
 - Setup lets you choose models for code delegates, judgment and review panels.
-- Choose within your available models and reasoning budget; override only the roles you care about.
+- The JSON is a compact illustration; the actual setup writes a role list. The model slugs include the reasoning level.
+- Choose within your available models and reasoning budget; override only the roles you care about. A review panel runs one reviewer per listed model.
 - This is Cursor’s command syntax. Now back to our feature walkthrough.
 
 SOURCE: research/raw/pstack-guide.md, chapter 01. Role-level configuration is documented behavior, not a benchmark recommending specific models. This slide does not configure the presenter’s environment.
@@ -808,19 +828,25 @@ SOURCE: research/raw/2026-09-22-outpost-zero-verification.md; smoke session 01a0
 -->
 
 ---
-class: outpost-example
+class: outpost-example outpost-maintenance-slide
 ---
 
 # Pstack maintains the feature map too
 
 <p class="outpost-command"><code>/maintain-verification-skill</code></p>
-<div class="outpost-maintenance">
-<p><strong>01</strong><span>Read the source for each feature</span></p>
-<p><strong>02</strong><span>Exercise every mapped feature in the app</span></p>
-<p><strong>03</strong><span>Prove corrections to the skill and map</span></p>
+<div class="maintenance-grid">
+<div class="maintenance-steps">
+<p><strong>01</strong><span>Inspect the source</span></p>
+<p><strong>02</strong><span>Exercise each feature</span></p>
+<p><strong>03</strong><span>Prove map corrections</span></p>
 </div>
-<p class="outpost-gotcha">Stale instructions → update them. Product bug → report it.</p>
-<p class="source">Automated when invoked · maintenance workflow, not a recorded run</p>
+<img class="maintenance-art" src="/illustrations/hamcrab-maintain-feature-map.png" alt="Hamcrab compares a feature map with a running app and corrects an outdated entry." />
+</div>
+<div class="maintenance-outcomes">
+<p><strong>Stale instructions</strong><span>→</span> Update the map</p>
+<p><strong>Product bug</strong><span>→</span> Report it</p>
+</div>
+<p class="source maintenance-source">Automated when invoked · maintenance workflow, not a recorded run</p>
 
 <!--
 TIME: 10:45–11:15 (30s)

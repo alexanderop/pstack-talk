@@ -144,7 +144,8 @@ SOURCE: User-supplied invocation screenshot. The screenshot shows skill selectio
 TIME: 04:20–04:35 (15s)
 
 - Setup lets you choose models for code delegates, judgment and review panels.
-- Choose within your available models and reasoning budget; override only the roles you care about.
+- The JSON is a compact illustration; the actual setup writes a role list. The model slugs include the reasoning level.
+- Choose within your available models and reasoning budget; override only the roles you care about. A review panel runs one reviewer per listed model.
 - This is Cursor’s command syntax. Now back to our feature walkthrough.
 
 SOURCE: research/raw/pstack-guide.md, chapter 01. Role-level configuration is documented behavior, not a benchmark recommending specific models. This slide does not configure the presenter’s environment.
